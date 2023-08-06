@@ -15,7 +15,11 @@ const Proflie=({navigation,route})=>{
           </View>
           <View style={{marginTop:10,}}>
            <View style={{backgroundColor:'white',marginTop:10,height:50,justifyContent:'center',}}>
-            <TouchableOpacity style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
+            <TouchableOpacity 
+            
+            onPress={()=>navigation.navigate('information')}
+            
+            style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
               <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/proflie/icons8-my-account-32.png')}/>
               <Text>Account Information</Text>
             </TouchableOpacity>
@@ -40,7 +44,11 @@ const Proflie=({navigation,route})=>{
            </View>
            <View style={{height:0.3,backgroundColor:'black'}}/>
            <View style={{backgroundColor:'white',height:50,justifyContent:'center'}}>
-            <TouchableOpacity style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
+            <TouchableOpacity 
+            
+            onPress={()=>navigation.navigate('about')}
+            
+            style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
               <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/proflie/icons8-about-50.png')}/>
               <Text>About</Text>
             </TouchableOpacity>
@@ -48,7 +56,11 @@ const Proflie=({navigation,route})=>{
            </View>
            <View style={{height:0.5,backgroundColor:'black'}}/>
            <View style={{backgroundColor:'white',height:50,justifyContent:'center'}}>
-            <TouchableOpacity style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
+            <TouchableOpacity 
+            
+            onPress={()=>navigation.navigate('contact')}
+            
+            style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
               <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/proflie/icons8-contact-us-32.png')}/>
               <Text>Contact us</Text>
             </TouchableOpacity>

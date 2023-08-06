@@ -1,8 +1,56 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { SafeAreaView,Text,TextInput,TouchableOpacity,View,Image } from "react-native";
+import loginAction from '../stores/action/login';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useDispatch,useSelector } from "react-redux";
+
+
 
 
 const Login=(Props)=>{
+    let userInfromation=useSelector(state=>state.User)
+    const [email,setEmail]=useState('')
+    const [password,setPassword]=useState('')
+    const [error,setError] = useState(false)
+    const dispatch=useDispatch()
+
+    useEffect(()=>{
+
+          
+           
+          
+
+
+    },[])
+
+
+       const loginHandler=()=>{
+         
+              AsyncStorage.getItem('user').then((res)=>{
+              const userInfromation=JSON.parse(res)
+               console.log(userInfromation)
+
+               userInfromation.map((item,index)=>{
+                if(item.email == email && item.password==password){
+                    console.log('login successful')
+                    setError(false)
+                    AsyncStorage.setItem('user',JSON.stringify(userInfromation))
+                    dispatch(loginAction.login(userInfromation))
+                }
+                else{
+                    console.log('login fail')
+                    setError(true)
+                   
+                }
+               })
+            
+            }
+              )
+             
+          
+        }
+
+
     return(
         <SafeAreaView style={{flex:1,padding:20,justifyContent:'center',backgroundColor:'white'}}>
             <View style={{alignItems:'center',marginBottom:20}}>
@@ -10,16 +58,22 @@ const Login=(Props)=>{
                 <Text style={{fontSize:20,fontWeight:'bold',marginTop:20}}>လူပျိုကြီး</Text>
                 <Text style={{marginTop:10}}>ပန်းပင်မျိုးစုံနဲ့ တခြားပျိုးပင်များ ရောင်းချပေးနေသည်</Text>
             </View>
-             <View style={{alignItems:'center',marginTop:50}}>
+             {error? <View style={{alignItems:'center',marginTop:50}}>
              <Text style={{color:'red'}}>
                 Something is wrong!
              </Text>
              <Text style={{color:'red'}} >Please check your email address or password.</Text>
-             </View>
+             </View>:
+             <View/>
+             
+             }
             <View style={{marginTop:20}}>
                 <Text style={{fontWeight:'bold'}}>Email ID</Text>
                 <TextInput 
                 placeholder="Enter your email"
+                onChangeText={(text)=>setEmail(text)}
+                keyboardType="email-address"
+                value={email}
                 style={{borderWidth:1,height:45,borderRadius:10,padding:5,marginTop:5,}}/>
             </View>
 
@@ -28,11 +82,17 @@ const Login=(Props)=>{
                 <TextInput 
                 secureTextEntry={true}
                 placeholder="Enter your password"
+                onChangeText={(text)=>setPassword(text)}
+                value={password}
                 style={{borderWidth:1,height:45,borderRadius:10,padding:5,marginTop:5}}/>
             </View>
 
             <TouchableOpacity 
-              onPress={()=>Props.navigation.navigate('home')}
+              onPress={()=>
+
+                 loginHandler()
+
+              }
             style={{backgroundColor:'blue',alignItems:'center',marginTop:20,height:45,justifyContent:'center',borderRadius:10}}>
                 <Text style={{color:'white'}}>Login</Text>
             </TouchableOpacity>
@@ -52,4 +112,4 @@ const Login=(Props)=>{
     )
 }
 
-export default Login
+export default Login;

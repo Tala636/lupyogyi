@@ -36,7 +36,13 @@ const Category=({navigation,route})=>{
                 <View style={{alignItems:'center',justifyContent:'center',padding:10}}>
                 <TouchableOpacity
                 onPress={()=>{
-                  item._id==1?navigation.navigate('showItem'):navigation.navigate('showItem2')
+                 switch(item._id){
+                  case "1":
+                 return navigation.navigate('showItem');
+                  case "2":
+                 return   navigation.navigate('showItem2');
+                   
+                 }
                 }}
                 style={{height:500,width:350,marginHorizontal:5,backgroundColor:'white',elevation:5,borderRadius:20,marginLeft:10}}
                 key={index}>

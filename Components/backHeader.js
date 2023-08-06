@@ -1,24 +1,23 @@
 import React from "react";
-import {View,Image,Text,TouchableOpacity} from 'react-native';
+import {View,Image,Text,TouchableOpacity,Dimensions,SafeAreaView} from 'react-native';
 
-const BackHead=()=>{
+const Wid=Dimensions.get('screen').width
+
+const BackHead=({navigation})=>{
     return(
-        <View style={{height:60,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
-          <View style={{flexDirection:'row'}}>
-            <TouchableOpacity>
-                <Image style={{width:45,height:45}} source={require('../assets/icons/icons8-plus-50.png')} />
-            </TouchableOpacity>
-            <Text>1</Text>
-            <TouchableOpacity>
-                <Image style={{width:45,height:45}} source={require('../assets/icons/icons8-minus-sign-64.png')}/>
-            </TouchableOpacity>
+      <SafeAreaView style={{elevation:5,height:50,backgroundColor:'white',width:Wid,position:'absolute',top:35,padding:5}}>
+      <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',justifyContent:'space-between'}}>
+   <TouchableOpacity 
+   onPress={()=>navigation.goBack()}
+   style={{marginLeft:5}}>
+   <Image style={{width:35,height:35}} source={require('../assets/icons/icons8-back-50.png')}/>
+   </TouchableOpacity>
+   
+  
+ 
 
-            
-          </View>
-          <TouchableOpacity>
-            <Text>Addcart</Text>
-          </TouchableOpacity>
-        </View>
+  </View>
+  </SafeAreaView>
     )
 }
 
