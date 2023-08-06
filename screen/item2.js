@@ -10,7 +10,7 @@ const ShowItems2=({navigation,route})=>{
     return(
         <SafeAreaView style={{flex:1}}>
         <HeaderComponent navigation={navigation}/>
-         <View style={{flex:1,backgroundColor:'white',marginTop:100}}>
+         <View style={{flex:1,marginTop:100}}>
            <FlatList 
            style={{}}
             data={Fruits}
@@ -21,9 +21,9 @@ const ShowItems2=({navigation,route})=>{
                   
                          <TouchableOpacity 
                          onPress={()=>navigation.navigate('detail',{product:item})}
-                         key={index} style={{flex:1,alignContent:'center',justifyContent:'center',width:Wid/2,margin:10,borderRadius:10,backgroundColor:'white',elevation:5,height:300, }}>
-                          <Image style={{width:175,height:220,borderRadius:10,padding:10,resizeMode:'cover',marginBottom:20}} source={item.subImg}/>
-                          <View style={{alignItems:'center',justifyContent:'center',marginTop:5,}}>
+                         key={index} style={{flex:1,width:Wid/2,margin:10,borderRadius:10,backgroundColor:'white',elevation:5,height:280, }}>
+                          <Image style={{width:'100%',height:'70%',borderRadius:10,resizeMode:'cover',}} source={item.subImg}/>
+                          <View style={{justifyContent:'center',paddingLeft:5,flex:1}}>
                             <Text style={{}}>{item.name}</Text>
                             <Text>Price:{item.price} mmk</Text>
                           </View>

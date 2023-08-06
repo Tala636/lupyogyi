@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from "react";
-import { SafeAreaView,View,TouchableOpacity,Text,Image,Dimensions,FlatList } from "react-native";
+import { SafeAreaView,View,TouchableOpacity,Text,Image,Dimensions,FlatList, Alert } from "react-native";
 import BottomTabComponent from "../Components/Bottom";
 import { useDispatch,useSelector } from "react-redux";
 import cartAction from '../stores/action/cart';
@@ -11,20 +11,22 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Wid =Dimensions.get('screen').width;
  
 
-
+ 
 
 const Cart=({navigation,route})=>{
+
    const [qty,setQty]=useState()
   let cartProducts=useSelector(state=>state.Cart)
   let totalQty=useSelector(state=>state.totalQty)
   const dispatch =useDispatch()
+ 
 
   useEffect(()=>{
 
       const getCartProduct=async()=>{
         const cartProdFromAsync=await AsyncStorage.getItem('cart')
         const cartProducts = JSON.parse(cartProdFromAsync)
-
+          //console.log("cartPro",cartProducts[0].price)
         if(cartProducts==null){
           AsyncStorage.setItem('cart',JSON.stringify([]))
           dispatch(cartAction.addToCart([]))
@@ -38,7 +40,7 @@ const Cart=({navigation,route})=>{
       const getTotalQty=async()=>{
         const totalQtyFromAsync =await AsyncStorage.getItem('cartTotalQty')
         const totalQty=JSON.parse(totalQtyFromAsync)
-
+        
         if(totalQty==null){
           AsyncStorage.setItem('cartTotalQty',JSON.stringify(0))
           dispatch(totalQtyAction.setTotalQty(0))
@@ -89,13 +91,11 @@ const Cart=({navigation,route})=>{
     }
 
     const deleteHandle=(delItem)=>{
-      let index =cartProducts.findIndex(prod=>prod==delItem)
+      let index =cartProducts.findIndex(prod=> prod !==delItem)
 
       let leftData =[]
       AsyncStorage.getItem('cart').then((res)=>{
         const cartData =JSON.parse(res)
-
-        console.log('cart data....',cartData)
 
         if(cartData==null){
           AsyncStorage.setItem('cart',JSON.stringify([]))
@@ -110,7 +110,7 @@ const Cart=({navigation,route})=>{
             leftData.push(cartData[i])
            }
           }
-          console.log('left data...',leftData)
+          
 
           AsyncStorage.setItem('cart',JSON.stringify(leftData))
           dispatch(cartAction.addToCart(leftData))
@@ -122,8 +122,14 @@ const Cart=({navigation,route})=>{
     
 
       })
+    }
 
+    const deleteAll = () => {
+      AsyncStorage.setItem('cart',JSON.stringify([]))
+          dispatch(cartAction.addToCart([]))
 
+          AsyncStorage.setItem('cartTotalQty',JSON.stringify(0))
+          dispatch(totalQtyAction.setTotalQty(0))
     }
 
     const BuyItem=()=>{
@@ -133,13 +139,20 @@ const Cart=({navigation,route})=>{
       dispatch(totalQtyAction.setTotalQty(0))
     }
 
+    let totalPrice = 0;
 
+cartProducts?.forEach(item => {
+  const itemTotal = item.price * item.qty;
+  totalPrice += itemTotal;
+});
 
     return(
         <SafeAreaView style={{flex:1}}>
         
-          <View style={{backgroundColor:'red',height:50,marginTop:35,justifyContent:'center',}}>
-            <TouchableOpacity style={{position:'absolute',right:10}}>
+          <View style={{height:50,marginTop:35,justifyContent:'center',}}>
+            <TouchableOpacity 
+             onPress={() => {deleteAll(),Alert.alert("Deleted all item from cart")}}
+            style={{position:'absolute',right:10,backgroundColor:'red',padding:10,borderRadius:10}}>
               <Text>Clear all</Text>
             </TouchableOpacity>
           </View>
@@ -156,7 +169,8 @@ const Cart=({navigation,route})=>{
            </View>
            <View style={{width:Wid/2,marginRight:35}}>
              <Text style={{marginBottom:15,fontSize:16,}}>{item.name}</Text>
-             <Text style={{marginBottom:10}}>Price:{item.prcie} mmk</Text>
+             <Text style={{marginBottom:10}}>Price:{item.price} mmk</Text>
+             
              <View style={{flexDirection:'row',}}>
              <TouchableOpacity onPress={()=>{clickPlus(item)}}>
                <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/icons/icons8-plus-50.png')}/>
@@ -167,7 +181,9 @@ const Cart=({navigation,route})=>{
                </TouchableOpacity>
              </View>
            </View>
-           <TouchableOpacity style={{position:'absolute',top:0,right:0}}>
+           <TouchableOpacity 
+           onPress={() => deleteHandle(item)}
+           style={{position:'absolute',top:0,right:0,backgroundColor:'#d7dade',borderRadius:50}}>
              <Image  style={{width:35,height:35}} source={require('../assets/icons/icons8-cross-sign-50.png')}/>
            </TouchableOpacity>
          </View>
@@ -192,7 +208,7 @@ const Cart=({navigation,route})=>{
             <View style={{flexDirection:'row',marginLeft:10}}>
              
                 <Text style={{marginRight:20,fontWeight:'bold'}}>Total cost:</Text>
-                <Text>29347 mmk</Text>
+                <Text> {totalPrice}mmk</Text>
              
             </View>
             <TouchableOpacity onPress={()=>BuyItem()} style={{position:'absolute',right:20,backgroundColor:'orange',height:40,width:100,alignItems:'center',justifyContent:'center',borderRadius:25}}>

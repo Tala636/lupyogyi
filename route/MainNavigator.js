@@ -23,9 +23,9 @@ const MainNavigator=()=>{
 
       <NavigationContainer>
         <stack.Navigator screenOptions={{headerShown:false}}>
-     <stack.Screen name="login" component={Login}/>
+     {/* <stack.Screen name="login" component={Login}/>
      
-       <stack.Screen name="signup" component={Signup}/>
+       <stack.Screen name="signup" component={Signup}/> */}
        <stack.Screen name="home" component={Home}/>
        <stack.Screen name="category" component={Category}/>
        <stack.Screen name="cart" component={Cart}/>
