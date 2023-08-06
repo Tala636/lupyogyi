@@ -4,7 +4,5 @@ export default[
       phone:'098574632',
       email:'kyawgyi123@gmail.com',
 
-    
-
 }
 ]

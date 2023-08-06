@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import { SafeAreaView,View,TouchableOpacity,Image,Text,Dimensions,ScrollView } from "react-native";
+import { SafeAreaView,View,TouchableOpacity,Image,Text,Dimensions,ScrollView,Alert } from "react-native";
 import HeaderComponent from "../Components/HeaderComponent";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch,useSelector } from "react-redux";
@@ -56,11 +56,12 @@ const ItemD=({navigation,route})=>{
    },[])
 
    const saveTocart=(prodItem)=>{
+    
     prodItem.qty=qty
     let  totalQty=prodItem.qty
     AsyncStorage.getItem('cart').then((res)=>{
       const cartProducts =JSON.parse(res)
-
+ 
       let cartArr=[]
       if(cartProducts==null){
         cartArr.push(prodItem)
@@ -69,6 +70,7 @@ const ItemD=({navigation,route})=>{
 
         AsyncStorage.setItem('cartTotalQty',JSON.stringify(totalQty))
         dispatch(totalQtyAction.setTotalQty(totalQty))
+        
       }
       else{
         let isInCart=null
@@ -93,8 +95,10 @@ const ItemD=({navigation,route})=>{
         setQty(1)
       }
 
-
-
+      Alert.alert('Alert Title', 'Item added to cart', [
+       
+        {text: 'OK', onPress: () => navigation.goBack()},
+      ]);
 
     })
     .catch((error)=>{
@@ -159,6 +163,8 @@ const ItemD=({navigation,route})=>{
       }
 
     }
+
+    
     
     return(
     
@@ -173,7 +179,7 @@ const ItemD=({navigation,route})=>{
       
    </View>
    <View style={{alignItems:'center'}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>{product.name}</Text></View>
-   <View style={{alignItems:'center'}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>Price: {product.price} mmk</Text></View>
+   <View style={{alignItems:'center'}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>Price: {product.price * qty} mmk</Text></View>
        <ScrollView>
         <View style={{backgroundColor:'white',marginHorizontal:10,padding:5,marginTop:10,marginBottom:120}}>
         <Text style={{fontSize:16,fontWeight:'bold',marginBottom:5}}>Light:</Text>
@@ -207,11 +213,11 @@ const ItemD=({navigation,route})=>{
 
          
             <TouchableOpacity onPress={()=>{clickPlus()}} style={{marginRight:10}}>
-                <Image style={{width:45,height:45}} source={require('../assets/icons/icons8-plus-50.png')} />
+                <Image style={{width:30,height:30}} source={require('../assets/icons/icons8-plus-50.png')} />
             </TouchableOpacity>
             
             <TouchableOpacity onPress={()=>{clickMinus()}}>
-                <Image style={{width:45,height:45}} source={require('../assets/icons/icons8-minus-sign-64.png')}/>
+                <Image style={{width:30,height:30}} source={require('../assets/icons/icons8-minus-sign-64.png')}/>
             </TouchableOpacity>
 
             
