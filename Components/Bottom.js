@@ -1,9 +1,34 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { View,Text,Dimensions,TouchableOpacity,Image,StyleSheet } from "react-native";
 import { colors } from "../constant/theme";
+import { useDispatch,useSelector } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import totalQtyAction from "../stores/action/qty"
 const Wid =Dimensions.get('screen').width;
 
 const BottomTabComponent =({navigation,ScreenName})=>{
+
+    const dispatch = useDispatch();
+    let totalQty=useSelector(state=>state.totalQty)
+  const [localQty, setLocalQty] = useState(); // Local state to track qty
+
+  useEffect(() => {
+    async function getQty() {
+      try {
+        const qtyData = await AsyncStorage.getItem('cartTotalQty');
+        const qty = JSON.parse(qtyData);
+        
+        if (qty !== null) {
+          setLocalQty(qty); // Update localQty with retrieved qty
+          dispatch(totalQtyAction.setTotalQty(qty)); // Update Redux state
+        }
+      } catch (error) {
+        console.error("Error retrieving quantity:", error);
+      }
+    }
+    getQty();
+  }, [dispatch]);
+     
     return(
         <View style={{flexDirection:'row',height:60,width:Wid,shadowColor:'black',backgroundColor:'white',elevation:5,position:'absolute',bottom:0}}>
         <TouchableOpacity 
@@ -26,7 +51,7 @@ const BottomTabComponent =({navigation,ScreenName})=>{
             <View style={{flexDirection:'row'}}>
             <Image source={require('../assets/icons8-fast-cart-32.png')} style={[styles.icons,{tintColor:ScreenName=='CartScreen'? colors.primary:'#C0C0C0'}]} />
             <View style={{backgroundColor:'orange',height:18,borderRadius:11,position:'absolute',left:16,top:0}}>
-            <Text style={{fontSize:12}}>12</Text>
+            <Text style={{fontSize:12}}></Text>
             </View>
             </View>
             <Text style={{color:ScreenName=='CartScreen'?colors.primary:'#C0C0C0'}}>Add to cart</Text>
