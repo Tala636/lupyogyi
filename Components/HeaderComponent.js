@@ -14,7 +14,7 @@ const HeaderComponent=({navigation})=>{
          <Image style={{width:35,height:35}} source={require('../assets/icons/icons8-back-50.png')}/>
          </TouchableOpacity>
          
-         <TouchableOpacity style={{flexDirection:'row',position:'absolute',left:180}}>
+         <TouchableOpacity onPress={()=>navigation.navigate('favorite')} style={{flexDirection:'row',position:'absolute',left:180}}>
             <Image source={require('../assets/icons/icons8-heart-32.png')}/>
             <Text style={{backgroundColor:'orange',height:18,borderRadius:11,fontSize:12,position:'absolute',left:28,top:0}}>22</Text>
          </TouchableOpacity>

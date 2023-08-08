@@ -7,11 +7,12 @@ import { useDispatch,useSelector } from "react-redux";
 
 
 
-const Login=(Props)=>{
+const Login=({navigation})=>{
     let userInfromation=useSelector(state=>state.User)
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const [error,setError] = useState(false)
+    const [view,setView] = useState(true)
     const dispatch=useDispatch()
 
     useEffect(()=>{
@@ -36,6 +37,11 @@ const Login=(Props)=>{
                     setError(false)
                     AsyncStorage.setItem('user',JSON.stringify(userInfromation))
                     dispatch(loginAction.login(userInfromation))
+                    setEmail('')
+                    setPassword('')
+                    navigation.navigate('home')
+                    
+                    
                 }
                 else{
                     console.log('login fail')
@@ -50,11 +56,15 @@ const Login=(Props)=>{
           
         }
 
+         
+
+
+
 
     return(
-        <SafeAreaView style={{flex:1,padding:20,justifyContent:'center',backgroundColor:'white'}}>
-            <View style={{alignItems:'center',marginBottom:20}}>
-                 <Image style={{width:75,height:75}} source={require('../assets/icons/icons8-plant-48.png')}/>
+        <SafeAreaView style={{flex:1,padding:20,backgroundColor:'white',}}>
+            <View style={{alignItems:'center',marginTop:40}}>
+                 <Image style={{width:120,height:120,borderRadius:75,}} source={require('../assets/icons/appIcon.png')}/>
                 <Text style={{fontSize:20,fontWeight:'bold',marginTop:20}}>လူပျိုကြီး</Text>
                 <Text style={{marginTop:10}}>ပန်းပင်မျိုးစုံနဲ့ တခြားပျိုးပင်များ ရောင်းချပေးနေသည်</Text>
             </View>
@@ -77,22 +87,27 @@ const Login=(Props)=>{
                 style={{borderWidth:1,height:45,borderRadius:10,padding:5,marginTop:5,}}/>
             </View>
 
-            <View style={{marginTop:20}}>
+            <View style={{marginTop:20,}}>
                 <Text style={{fontWeight:'bold'}}>Password</Text>
                 <TextInput 
-                secureTextEntry={true}
+                secureTextEntry={view}
                 placeholder="Enter your password"
                 onChangeText={(text)=>setPassword(text)}
                 value={password}
                 style={{borderWidth:1,height:45,borderRadius:10,padding:5,marginTop:5}}/>
+                {view ? 
+                <TouchableOpacity onPress={()=>setView(false)} style={{position:'absolute',right:15,bottom:10}}>
+                    <Image source={require('../assets/icons/icons8-eye-30.png')} style={{height:25,width:25,tintColor:'black'}}/>
+                </TouchableOpacity>:
+                
+                <TouchableOpacity onPress={()=>setView(true)} style={{position:'absolute',right:15,bottom:10}}>
+                    <Image source={require('../assets/icons/icons8-eye-30.png')} style={{height:25,width:25,tintColor:'gray'}}/>
+                </TouchableOpacity>
+                }
             </View>
 
             <TouchableOpacity 
-              onPress={()=>
-
-                 loginHandler()
-
-              }
+              onPress={()=>loginHandler()}
             style={{backgroundColor:'blue',alignItems:'center',marginTop:20,height:45,justifyContent:'center',borderRadius:10}}>
                 <Text style={{color:'white'}}>Login</Text>
             </TouchableOpacity>
@@ -100,7 +115,7 @@ const Login=(Props)=>{
             <View style={{alignItems:'center',flexDirection:'row',justifyContent:'center',marginTop:20}}>
                 <Text style={{marginRight:5}}>I am a new user.</Text>
                 <TouchableOpacity 
-                onPress={()=>Props.navigation.navigate('signup')}
+                onPress={()=>navigation.navigate('signup')}
                 >
                     <Text style={{fontWeight:'bold',color:'blue'}}>Sign up</Text>
                     <View style={{backgroundColor:'blue',height:1,}}/>

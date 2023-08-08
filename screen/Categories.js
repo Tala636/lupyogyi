@@ -18,7 +18,21 @@ img3: {uri:"https://i.pinimg.com/564x/1d/32/68/1d3268d6dac953424852cfdc36f53209.
 img4: {uri:"https://i.pinimg.com/564x/42/0e/48/420e48430dad33a855c6dc018fb9f927.jpg"},
 _id: "2",
 plantCateName: "နှစ်ရှည်သီးပင်စားပင်များ",
-}
+},
+
+ {
+  img1: {uri:"https://www.bridgestone.com/technology_innovation/natural_rubber/para_rubber_tree/images/img_01.jpg"},
+  img2: {uri:"https://media.istockphoto.com/id/462180853/photo/rubber-tree.jpg?s=612x612&w=0&k=20&c=JdvgezAgv_9BywvMmwSPpXsCxtz8-yTsQOvKi1W6Tow="},
+  img3:{uri:"https://img.freepik.com/premium-photo/small-rubber-tree-nursery_5207-319.jpg?w=2000"},
+  img4: {uri:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Ac%C3%A1cia_Mangium_-_S%C3%ADtio_Caramon%C3%A3.jpg/640px-Ac%C3%A1cia_Mangium_-_S%C3%ADtio_Caramon%C3%A3.jpg"}
+  ,
+  _id: "3",
+  plantCateName: "စက်မှုကုန်ကြမ်းသုံး အပင်များ",
+  
+
+ }
+  
+
   
 ]
 
@@ -41,6 +55,8 @@ const Category=({navigation,route})=>{
                  return navigation.navigate('showItem');
                   case "2":
                  return   navigation.navigate('showItem2');
+                 case "3" :
+                  return navigation.navigate('showItem3');
                    
                  }
                 }}

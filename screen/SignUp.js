@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import { SafeAreaView,View,Text,TouchableOpacity,TextInput,Dimensions,StyleSheet } from "react-native";
+import { SafeAreaView,View,Text,TouchableOpacity,TextInput,Dimensions,StyleSheet,Image } from "react-native";
 import ModalComponent from "../Components/Modal";
 import loginAction from '../stores/action/login';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -25,7 +25,7 @@ const Signup=({navigation,route})=>{
     const [phone,setPhone]=useState('')
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
- 
+    const [view,setView] = useState(true)
     const [Wname,setWname]=useState(false)
     const [Wphone,setWphone]=useState(false)
     const [Wemail,setWemail]=useState(false)
@@ -156,7 +156,10 @@ const Signup=({navigation,route})=>{
         AsyncStorage.setItem('user',JSON.stringify(Arr))
         dispatch(loginAction.login(Arr)) 
         console.log(Arr)
-
+        setName('')
+        setPhone('')
+        setEmail('')
+        setPassword('')
          
 
 
@@ -228,11 +231,20 @@ const Signup=({navigation,route})=>{
             <Text style={{marginBottom:5,fontWeight:'bold'}}>Password:</Text>
             <TextInput style={{borderWidth:0.5,width:350,padding:5}}
              placeholder="create your password"
-             secureTextEntry={true}
+             secureTextEntry={view}
              onChangeText={text=>setPassword(text)}
              value={password}
              
             />
+            { view ? 
+                <TouchableOpacity onPress={()=>setView(false)} style={{position:'absolute',right:15,bottom:25}}>
+                    <Image source={require('../assets/icons/icons8-eye-30.png')} style={{height:25,width:25,tintColor:'black'}}/>
+                </TouchableOpacity>:
+                
+                <TouchableOpacity onPress={()=>setView(true)} style={{position:'absolute',right:15,bottom:25}}>
+                    <Image source={require('../assets/icons/icons8-eye-30.png')} style={{height:25,width:25,tintColor:'gray'}}/>
+                </TouchableOpacity>
+                }
             {Wpass? <Text style={{marginTop:5,color:'red'}}>Your password should have 6 charaters at least.</Text>:
             <Text></Text>
             }

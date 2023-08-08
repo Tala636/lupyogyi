@@ -1,95 +1,169 @@
-import React from "react";
-import { SafeAreaView,View,Text,TouchableOpacity,Image,FlatList,ScrollView, } from "react-native";
+import React,{useState,useEffect,useRef} from "react";
+import { SafeAreaView,View,Text,TouchableOpacity,
+  Image,FlatList,ScrollView,TextInput,StyleSheet,Dimensions } from "react-native";
 import BottomTabComponent from "../Components/Bottom";
+import AllProduct from "../Products/AllProduct";
+import HomeImg from "../Products/Carousel";
 
-const Plant=[
-  {name:'Pant1',
-   prcie:1500,
-   img: require('../assets/photo/1_birds-nest-plant-beige-pot_53876-134284.png')},
-   {name:'Pant2',
-   prcie:1500,
-   img: require('../assets/photo/2_cereus-cactus-pot_53876-134292.png')},
+const screenWidth=Dimensions.get("window").width
 
-   {name:'Pant3',
-   prcie:1500,
-   img: require('../assets/photo/3_isometric-plant-3d-rendering_28315-3608.png')},
-
-   {name:'Pant4',
-   prcie:1500,
-   img: require('../assets/photo/4_monstera-deliciosa-plant-pot_53876-133119.png')},
-   {name:'Pant5',
-   prcie:1500,
-   img: require('../assets/photo/5_monstera-plant-black-pot_53876-134313.png')},
-   
-]
 const Home=({navigation,route})=>{
-    return(
-        <SafeAreaView style={{flex:1,alignItems:'center',justifyContent:'center',}}>
-       <ScrollView>
-       
-       <View style={{marginTop:100}}>
-        <Text style={{fontSize:20,marginLeft:20}}>Popular Items</Text>
-            <FlatList 
-              data={Plant}
-              renderItem={({item,index})=>{
-                return (
-                  <TouchableOpacity 
-                  style={{height:200,width:150,backgroundColor:'white',marginHorizontal:5,padding:5,elevation:2,borderRadius:10,marginLeft:10,marginTop:10}}
-                   key={index}>
-                   <Image style={{height:'100%',width:'100%'}} source={item.img}/>
-                  </TouchableOpacity>
-                )
+  const [searchText,setSearchText]=useState('')
+  const [filterData,setFilterdata]=useState([])
+  const [Img,setImg]=useState([]);
+  const [activeIndex,setActiveIndex]=useState(0)
 
-              }}
-              keyExtractor={(item,index)=>index.toString()}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-            />
-            <View style={{marginTop:20}}>
-              
-              <Text style={{fontSize:20,marginLeft:20}}>New Items</Text>
-            <FlatList 
-              data={Plant}
-              renderItem={({item,index})=>{
-                return(
-                  <TouchableOpacity 
-                  style={{height:200,width:150,backgroundColor:'white',marginHorizontal:5,padding:5,elevation:2,borderRadius:10,marginLeft:10,marginTop:10}}
-                   key={index}>
-                   <Image style={{height:'100%',width:'100%'}} source={item.img}/>
-                  </TouchableOpacity>
-                )
+  useEffect(()=>{
 
-              }}
-              keyExtractor={(item,index)=>index.toString()}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-            />
+      const getData=()=>{
+        setFilterdata(AllProduct)
+        setImg(HomeImg)
+        
+      }
+      getData();
 
-            <View style={{marginBottom:100,marginTop:20}}>
-            <Text style={{fontSize:20,marginLeft:20}}>Popular Items</Text>
-            <FlatList 
-              data={Plant}
-              renderItem={({item,index})=>{
-                return(
-                  <TouchableOpacity 
-                  style={{height:200,width:150,backgroundColor:'white',marginHorizontal:5,padding:5,elevation:2,borderRadius:10,marginLeft:10,marginTop:10}}
-                   key={index}>
-                   <Image style={{height:'100%',width:'100%'}} source={item.img}/>
-                  </TouchableOpacity>
-                )
+  },[])
+   
 
-              }}
-              keyExtractor={(item,index)=>index.toString()}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-            />
-            </View>
-            </View>
+  const Cross=()=>{
+     setSearchText('')
+  }
+
+   const renderDotIndicator=()=>{
+    return Img.map((dot,index)=>{
+       if(activeIndex===index){
+        return(
+          <View key={index} style={{backgroundColor:'green',
+          height:10,width:10,marginHorizontal:5,
+          borderRadius:5}}>
+          
           </View>
-       </ScrollView>
-          <BottomTabComponent navigation={navigation} ScreenName="HomeScreen" /> 
-        </SafeAreaView>
-    )
+        )
+       }
+       else{
+        return(
+          <View key={index} style={{backgroundColor:'red',
+          height:10,width:10,marginHorizontal:5,
+          borderRadius:5}}>
+          
+          </View>
+        )
+       }
+      })
+    
+   }
+
+   const handleScroll=(event)=>{
+     //get the scroll position
+     const scrollPosition =event.nativeEvent.contentOffset.x
+     console.log({scrollPosition})
+     console.log({screenWidth})
+     const index =(scrollPosition)/(screenWidth);
+     console.log({index})
+
+     setActiveIndex(index)
+     
+   }
+
+   const renderItem=({item,index})=>{
+     return(
+      <View style={{elevation:5}}>
+      <Image source={item.img} style={{height:300,width:screenWidth}} />
+    </View>
+     )
+    
+   }
+     
+
+
+ return(
+     <SafeAreaView style={{flex:1}}>
+      
+      <View style={{flexDirection:'row',height:40,marginTop:50,justifyContent:'center',alignItems:'center'}}>
+        
+         <View style={{flexDirection:'row',justifyContent:'center',backgroundColor:'white',alignItems:'center',height:40,width:320,borderRadius:15,borderWidth:0.5}}>
+
+             <Image style={{width:25,height:25,position:'absolute',left:10}} source={require('../assets/icons/icons8-search-24.png')}/>
+             <TextInput style={{position:'absolute',left:40}}
+              placeholder="Search products"
+              keyboardType="web-search"
+              underlineColorAndroid={'transparent'}
+              onChangeText={(text)=>setSearchText(text)}
+              value={searchText}
+             />
+             { searchText===''? <View/>:
+
+<TouchableOpacity onPress={()=>Cross()} style={{position:'absolute',right:10}}>
+<Image source={require('../assets/icons/icons8-cross-sign-50.png')} style={{width:25,height:25,}}/>
+</TouchableOpacity>
+             
+             }
+         </View>
+      </View>
+      
+     { searchText=== '' ?
+     <ScrollView style={{marginTop:20}}>
+        <Text style={{fontSize:18,fontWeight:'bold',marginLeft:10,marginBottom:10}}>Welcome!</Text>
+      <FlatList 
+       data={Img}
+       renderItem={renderItem}
+       onScroll={handleScroll}
+       keyExtractor={(item)=>item.id}
+       horizontal={true}
+       pagingEnabled={true}
+       
+      />
+     <View style={{flex:1,flexDirection:'row',alignItems:'center',justifyContent:'center'}}>{renderDotIndicator()}</View>
+
+     
+     </ScrollView>
+      
+    
+     //Items show view                                      
+     
+     :   
+
+     <View style={{marginTop:20}}> 
+       <FlatList 
+        data={filterData}
+       
+        renderItem={({item,index})=>{
+          if(item.name.includes((searchText))){
+            return(
+              <TouchableOpacity onPress={()=>navigation.navigate('detail',{product:item})} style={styles.listContainer}>
+              <Text style={{position:'absolute',left:15}}>{item.name}</Text>
+               <Image style={{position:'absolute',right:10}} source={require('../assets/icons/listArrow.png')}/>
+            </TouchableOpacity>
+            )
+          }
+         
+        }}
+        
+        keyExtractor={(item,index)=>index.toString()}
+        showsVerticalScrollIndicator={false}
+       />
+
+     </View> //filter view...!
+
+     }
+     <BottomTabComponent navigation={navigation} ScreenName='HomeScreen'/> 
+     </SafeAreaView>
+ )
 }
 
 export default Home;
+
+const styles = StyleSheet.create({
+
+  listContainer:{alignItems:'center',
+  justifyContent:'center',
+  backgroundColor:'white',
+  marginHorizontal:10,marginVertical:2,
+  height:50,flexDirection:'row',
+  borderRadius:5,shadowColor:'gray',
+  elevation:5
+   
+
+}
+
+})
