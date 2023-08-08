@@ -20,6 +20,7 @@ const Cart=({navigation,route})=>{
   let totalQty=useSelector(state=>state.totalQty)
   const dispatch =useDispatch()
  
+  
 
   useEffect(()=>{
 
@@ -40,6 +41,8 @@ const Cart=({navigation,route})=>{
       const getTotalQty=async()=>{
         const totalQtyFromAsync =await AsyncStorage.getItem('cartTotalQty')
         const totalQty=JSON.parse(totalQtyFromAsync)
+
+        
         
         if(totalQty==null){
           AsyncStorage.setItem('cartTotalQty',JSON.stringify(0))
@@ -48,6 +51,8 @@ const Cart=({navigation,route})=>{
         else{
           AsyncStorage.setItem('cartTotalQty',JSON.stringify(totalQty))
           dispatch(totalQtyAction.setTotalQty(totalQty))
+
+          
         }
       }
       getCartProduct();
@@ -59,15 +64,20 @@ const Cart=({navigation,route})=>{
     const clickMinus=(minProd)=>{
       const index =cartProducts.findIndex(prod=>prod==minProd)
 
-      if(cartProducts[index].qty>1){
-        cartProducts[index].qty -=1
-        setQty(totalQty-1)
-
-        AsyncStorage.setItem('cart',JSON.stringify(cartProducts))
-        dispatch(cartAction.addToCart(cartProducts))
-
-        AsyncStorage.setItem('cartTotalQty',JSON.stringify(totalQty-1))
-        dispatch(totalQtyAction.setTotalQty(totalQty-1))
+      if (cartProducts[index].qty > 1) {
+        const updatedCartProducts = [...cartProducts]; 
+        updatedCartProducts[index] = {
+          ...updatedCartProducts[index],
+          qty: updatedCartProducts[index].qty - 1,
+        };
+    
+        const newTotalQty = totalQty - 1;
+    
+        AsyncStorage.setItem('cart', JSON.stringify(updatedCartProducts));
+        dispatch(cartAction.addToCart(updatedCartProducts));
+    
+        AsyncStorage.setItem('cartTotalQty', JSON.stringify(newTotalQty));
+        dispatch(totalQtyAction.setTotalQty(newTotalQty));
       }
       else{
         deleteHandle(minProd)
@@ -78,17 +88,20 @@ const Cart=({navigation,route})=>{
     const clickPlus=(plusProd)=>{
       let index =cartProducts.findIndex(prod=>prod==plusProd)
 
-      cartProducts[index].qty+=1
+      const updatedCartProducts = [...cartProducts]; 
+  updatedCartProducts[index] = {
+    ...updatedCartProducts[index],
+    qty: updatedCartProducts[index].qty + 1,
+  };
 
-      
-      AsyncStorage.setItem('cart',JSON.stringify(cartProducts))
-      dispatch(cartAction.addToCart(cartProducts))
-      
+  AsyncStorage.setItem('cart', JSON.stringify(updatedCartProducts));
+  dispatch(cartAction.addToCart(updatedCartProducts));
 
-      AsyncStorage.setItem('cartTotalQty',JSON.stringify(cartProducts[index].qty))
-      dispatch(totalQtyAction.setTotalQty(cartProducts[index].qty))
+  const newTotalQty = updatedCartProducts[index].qty;
 
-    }
+  AsyncStorage.setItem('cartTotalQty', JSON.stringify(newTotalQty));
+  dispatch(totalQtyAction.setTotalQty(newTotalQty));
+};
 
     const deleteHandle=(delItem)=>{
       let index =cartProducts.findIndex(prod=> prod !==delItem)
@@ -211,7 +224,10 @@ cartProducts?.forEach(item => {
                 <Text> {totalPrice}mmk</Text>
              
             </View>
-            <TouchableOpacity onPress={()=>BuyItem()} style={{position:'absolute',right:20,backgroundColor:'orange',height:40,width:100,alignItems:'center',justifyContent:'center',borderRadius:25}}>
+            <TouchableOpacity onPress={()=>  Alert.alert('', 'Are you sure want to buy', [
+       
+       {text: 'OK', onPress: () => BuyItem()},
+     ])} style={{position:'absolute',right:20,backgroundColor:'orange',height:40,width:100,alignItems:'center',justifyContent:'center',borderRadius:25}}>
                 <Text style={{color:'white',fontWeight:'bold'}}>Buy</Text>
             </TouchableOpacity>
            

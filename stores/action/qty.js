@@ -10,3 +10,4 @@ export const setTotalQty = (totalQty) => {
 }
 
 export default {setTotalQty}
+

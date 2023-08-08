@@ -207,6 +207,14 @@ const ItemD=({navigation,route})=>{
          <Text style={{fontWeight:'bold',}}>Amount:</Text>
           <Text style={{marginLeft:10}}>{qty}</Text>
          </View>
+
+         <TouchableOpacity onPress={()=>{saveTowishList(product),
+         Alert.alert(isInWishList? "Add to fav " : "Remove from Fav")}}  style={{}}>
+                 
+                    <Image style={{tintColor: isInWishList?'red': 'yellow',width:30,height:30,}} source={require('../assets/icons/icons8-heart-32.png')} />
+                   
+           
+            </TouchableOpacity>
          
           <View style={{flexDirection:'row',marginLeft:40}}>
 
@@ -227,18 +235,9 @@ const ItemD=({navigation,route})=>{
           </TouchableOpacity>
         </View>
         
-        <View style={{position:'absolute',top:100,right:20,}}>
-            <TouchableOpacity onPress={()=>{saveTowishList(product)}}  style={{}}>
-                  {
-                    isInWishList ? 
-                    <Image style={{tintColor:'red',width:45,height:45,}} source={require('../assets/icons/icons8-heart-32.png')} />
-                    :
-                    <Image style={{tintColor:'yellow',width:45,height:45,}} source={require('../assets/icons/icons8-heart-32.png')} />
-                  }
-                  
+        
            
-            </TouchableOpacity>
-        </View>
+        
 
         
 
