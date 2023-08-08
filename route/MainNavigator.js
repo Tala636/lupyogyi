@@ -15,6 +15,8 @@ import About from "../screen/about";
 import Contact from "../screen/contact";
 import Favo from "../screen/favorites";
 import OderList from "../screen/orderList";
+import Search from "../screen/searchItem";
+import ShowItems3 from "../screen/item3";
 
 const stack = createNativeStackNavigator();
 
@@ -23,9 +25,8 @@ const MainNavigator=()=>{
 
       <NavigationContainer>
         <stack.Navigator screenOptions={{headerShown:false}}>
-     {/* <stack.Screen name="login" component={Login}/>
-     
-       <stack.Screen name="signup" component={Signup}/> */}
+      {/*<stack.Screen name="login" component={Login}>
+       <stack.Screen name="signup" component={Signup}/>*/}
        <stack.Screen name="home" component={Home}/>
        <stack.Screen name="category" component={Category}/>
        <stack.Screen name="cart" component={Cart}/>
@@ -38,6 +39,8 @@ const MainNavigator=()=>{
        <stack.Screen name="contact" component={Contact}/>
        <stack.Screen name="favorite" component={Favo}/>
        <stack.Screen name="orderList" component={OderList}/>
+       <stack.Screen name="search" component={Search}/>
+       <stack.Screen name="showItem3" component={ShowItems3}/>
        
 
        
