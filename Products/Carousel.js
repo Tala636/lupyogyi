@@ -1,6 +1,6 @@
-export default[{id:'01',img:require('../assets/carousel/jackie.png')},
-               {id:'02',img:require('../assets/carousel/kauf.png')},
-               {id:'03',img:require('../assets/carousel/midcal-fotor.png')},
-               {id:'04',img:require('../assets/carousel/midgrf.png')},
-               {id:'05',img:require('../assets/carousel/wore.png')}
+export default[{id:'1',img:require('../assets/carousel/jackie.png')},
+               {id:'2',img:require('../assets/carousel/kauf.png')},
+               {id:'3',img:require('../assets/carousel/midcal-fotor.png')},
+               {id:'4',img:require('../assets/carousel/midgrf.png')},
+               {id:'5',img:require('../assets/carousel/wore.png')},
                        ]

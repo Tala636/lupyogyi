@@ -20,7 +20,7 @@ import ShowItems3 from "../screen/item3";
 
 const stack = createNativeStackNavigator();
 
-const MainNavigator=()=>{
+const MainNavigator=({navigation})=>{
     return(
 
       <NavigationContainer>
