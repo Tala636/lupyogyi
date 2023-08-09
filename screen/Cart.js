@@ -3,6 +3,7 @@ import { SafeAreaView,View,TouchableOpacity,Text,Image,Dimensions,FlatList, Aler
 import BottomTabComponent from "../Components/Bottom";
 import { useDispatch,useSelector } from "react-redux";
 import cartAction from '../stores/action/cart';
+import orderAction from '../stores/action/order';
 import totalQtyAction from '../stores/action/qty';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -20,7 +21,7 @@ const Cart=({navigation,route})=>{
   let totalQty=useSelector(state=>state.totalQty)
   const dispatch =useDispatch()
  
-  
+  // console.log("cart",cartProducts[0].description)
 
   useEffect(()=>{
 
@@ -145,11 +146,51 @@ const Cart=({navigation,route})=>{
           dispatch(totalQtyAction.setTotalQty(0))
     }
 
-    const BuyItem=()=>{
+    const BuyItem=(prod)=>{
+
       AsyncStorage.removeItem('cart')
       dispatch(cartAction.addToCart([]))
       AsyncStorage.removeItem('cartTotalQty')
       dispatch(totalQtyAction.setTotalQty(0))
+
+
+      AsyncStorage.getItem('Buy').then((res)=>{
+    const cartProducts =JSON.parse(res)
+          
+    let cartBuyArr=[]
+     if(cartProducts==null){
+      cartBuyArr.push(prod)
+      
+      AsyncStorage.setItem('Buy',JSON.stringify(cartBuyArr))
+      dispatch(orderAction.addToOrder(cartBuyArr))
+
+    
+    }
+    else{
+      let isInCart=null
+
+      for(let i=0;i<cartProducts.lenght;i++){
+       
+
+        if(cartProducts[i]._id==prod._id){
+          cartProducts[i].qty+=1
+          isInCart=prod._id
+        }
+      }
+      if(isInCart==null){
+        cartProducts.push(prod)
+      }
+      
+      AsyncStorage.setItem('Buy', JSON.stringify(cartProducts));
+      dispatch(orderAction.addToOrder(cartProducts));
+      
+    }
+
+
+  })
+  .catch((error)=>{
+    console.log('catch error',error)
+  })
     }
 
     let totalPrice = 0;
@@ -158,6 +199,8 @@ cartProducts?.forEach(item => {
   const itemTotal = item.price * item.qty;
   totalPrice += itemTotal;
 });
+
+
 
     return(
         <SafeAreaView style={{flex:1}}>
@@ -226,7 +269,7 @@ cartProducts?.forEach(item => {
             </View>
             <TouchableOpacity onPress={()=>  Alert.alert('', 'Are you sure want to buy', [
        
-       {text: 'OK', onPress: () => BuyItem()},
+       {text: 'OK', onPress: () => BuyItem(cartProducts)},
      ])} style={{position:'absolute',right:20,backgroundColor:'orange',height:40,width:100,alignItems:'center',justifyContent:'center',borderRadius:25}}>
                 <Text style={{color:'white',fontWeight:'bold'}}>Buy</Text>
             </TouchableOpacity>

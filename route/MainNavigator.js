@@ -14,9 +14,11 @@ import Inform from "../screen/Information";
 import About from "../screen/about";
 import Contact from "../screen/contact";
 import Favo from "../screen/favorites";
-import OderList from "../screen/orderList";
 import Search from "../screen/searchItem";
+import OrderScreen from "../screen/Order";
 import ShowItems3 from "../screen/item3";
+import OrderDetail from "../screen/OrderDetail";
+
 
 const stack = createNativeStackNavigator();
 
@@ -38,10 +40,11 @@ const MainNavigator=({navigation})=>{
        <stack.Screen name="about" component={About}/>
        <stack.Screen name="contact" component={Contact}/>
        <stack.Screen name="favorite" component={Favo}/>
-       <stack.Screen name="orderList" component={OderList}/>
+       <stack.Screen name="Order Screen" component={OrderScreen}/>
        <stack.Screen name="search" component={Search}/>
        <stack.Screen name="showItem3" component={ShowItems3}/>
-       
+    <stack.Screen name="Order Detail" component={OrderDetail}/>
+      
 
        
      </stack.Navigator>
