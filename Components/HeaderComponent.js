@@ -7,7 +7,7 @@ const HeaderComponent=({navigation})=>{
     return(
 
         <SafeAreaView style={{elevation:5,height:50,backgroundColor:'white',width:Wid,position:'absolute',top:35,padding:5}}>
-            <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',justifyContent:'space-between'}}>
+            {/* <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',justifyContent:'space-between'}}> */}
          <TouchableOpacity 
          onPress={()=>navigation.goBack()}
          style={{marginLeft:5}}>
@@ -38,9 +38,9 @@ const HeaderComponent=({navigation})=>{
 
          </View>
         
-       
+       </View>
 
-        </View>
+        
         </SafeAreaView>
     )
 }
