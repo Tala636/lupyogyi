@@ -77,7 +77,7 @@ const BottomTabComponent =({navigation,ScreenName})=>{
         onPress={()=>navigation.navigate('profile')}
         style={{width:Wid/4,justifyContent:'center',alignItems:'center'}}>
             
-            <Image source={require('../assets/icons8-profile-32.png')} style={[styles.icons,{tintColor:ScreenName=='ProfileScreen'? colors.primary:'#C0C0C0'}]} />
+            <Image source={require('../assets/icons8-profile-32.png')} style={[styles.icons,{tintColor:ScreenName=='ProfileScreen'? "#0cf5ca":'#C0C0C0'}]} />
             
             
             <Text style={{color:ScreenName=='ProfileScreen'?"#0cf5ca":'#C0C0C0'}}>Account</Text>

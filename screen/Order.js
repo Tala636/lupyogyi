@@ -50,7 +50,7 @@ const Order = ({ navigation, route }) => {
                                     item?.map((item, index) => {
                                         return (
                                             <TouchableOpacity
-                                                 onPress={ () => navigation.navigate('Order Detail',{selectedOrder: item}
+                                                 onPress={ () => navigation.navigate('orderDetail',{selectedOrder: item}
                                                 )} 
                                                 style={{ padding: 5, backgroundColor: 'white', marginTop: 6, borderRadius: 10, }}>
 
