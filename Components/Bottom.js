@@ -1,3 +1,4 @@
+
 import React,{useEffect} from "react";
 import { View,Text,Dimensions,TouchableOpacity,Image,StyleSheet } from "react-native";
 import { colors } from "../constant/theme";
@@ -57,13 +58,17 @@ const BottomTabComponent =({navigation,ScreenName})=>{
         onPress={()=>navigation.navigate('cart')}
         style={{width:Wid/4,justifyContent:'center',alignItems:'center'}}>
             <View style={{flexDirection:'row'}}>
+
             <Image source={require('../assets/icons8-fast-cart-32.png')} style={[styles.icons,{tintColor:ScreenName=='CartScreen'? "#0cf5ca":'#C0C0C0'}]} />
+
             
            { totalQty!=0  &&
                <View style={{backgroundColor:'orange',height:18,borderRadius:11,position:'absolute',left:16,top:0}}>
                <Text style={{fontSize:12}}>{totalQty}</Text>
                </View>
         }
+
+           
             </View>
             <Text style={{color:ScreenName=='CartScreen'?"#0cf5ca":'#C0C0C0'}}>Add to cart</Text>
         </TouchableOpacity>

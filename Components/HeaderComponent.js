@@ -35,16 +35,22 @@ const HeaderComponent=({navigation})=>{
 
     return(
 
+
         <SafeAreaView style={{elevation:5,height:40,backgroundColor:'#17692e',width:Wid,position:'absolute',top:35,padding:5}}>
             <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',justifyContent:'space-between'}}>
+
          <TouchableOpacity 
          onPress={()=>navigation.goBack()}
          style={{marginLeft:5}}>
          <Image style={{width:35,height:35}} source={require('../assets/icons/icons8-back-50.png')}/>
          </TouchableOpacity>
          
+
          <View style={{flexDirection:'row',position:'absolute',right:5}}>
          <TouchableOpacity 
+
+
+      
          onPress={()=>navigation.navigate('cart')}
          style={{marginRight:10}}>
          <Image style={{width:35,height:35}} source={require('../assets/icons/icons8-sell-stock-64.png')}/>
@@ -58,9 +64,9 @@ const HeaderComponent=({navigation})=>{
 
          </View>
         
-       
+       </View>
 
-        </View>
+        
         </SafeAreaView>
     )
 }
