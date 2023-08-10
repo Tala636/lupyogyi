@@ -14,10 +14,10 @@ import Inform from "../screen/Information";
 import About from "../screen/about";
 import Contact from "../screen/contact";
 import Favo from "../screen/favorites";
-
-import OderList from "../screen/orderList";
 import ShowItems3 from "../screen/item3";
 import ShowItems4 from "../screen/item4";
+import OrderDetail from "../screen/OrderDetail";
+import Order from "../screen/Order";
 
 
 
@@ -28,8 +28,8 @@ const MainNavigator=({navigation})=>{
 
       <NavigationContainer>
         <stack.Navigator screenOptions={{headerShown:false}}>
-      {/*<stack.Screen name="login" component={Login}>
-       <stack.Screen name="signup" component={Signup}/>*/}
+      <stack.Screen name="login" component={Login}/>
+       <stack.Screen name="signup" component={Signup}/>
        <stack.Screen name="home" component={Home}/>
        <stack.Screen name="category" component={Category}/>
        <stack.Screen name="cart" component={Cart}/>
@@ -41,10 +41,10 @@ const MainNavigator=({navigation})=>{
        <stack.Screen name="about" component={About}/>
        <stack.Screen name="contact" component={Contact}/>
        <stack.Screen name="favorite" component={Favo}/>
-
-       <stack.Screen name="orderList" component={OderList}/>
        <stack.Screen name="showItem3" component={ShowItems3}/>
        <stack.Screen name="showItem4" component={ShowItems4}/>
+       <stack.Screen name="orderList" component={Order}/>
+       <stack.Screen name="orderDetail" component={OrderDetail}/>
 
        
 

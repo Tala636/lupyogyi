@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView,View,TouchableOpacity,Text,Image, } from "react-native";
 import { colors } from "../constant/theme";
+import BottomTabComponent from "../Components/Bottom";
 const Proflie=({navigation,route})=>{
     return(
         <SafeAreaView style={{flex:1}}>
@@ -28,7 +29,7 @@ const Proflie=({navigation,route})=>{
 
            <View style={{backgroundColor:'white',height:50,justifyContent:'center'}}>
             <TouchableOpacity 
-            onPress={() => navigation.navigate('Order Screen')}
+            onPress={() => navigation.navigate('orderList')}
             style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
               <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/proflie/icons8-purchase-order-50.png')}/>
               <Text>My Order List</Text>
@@ -80,7 +81,7 @@ const Proflie=({navigation,route})=>{
             </TouchableOpacity>
            </View>
           </View>
-         
+         <BottomTabComponent navigation={navigation} ScreenName="ProfileScreen"/>
         </SafeAreaView>
     )
 }

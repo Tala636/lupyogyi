@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import {View,TouchableOpacity,Text,StyleSheet,Modal } from "react-native";
 
 
-const ModalComponent = ({loginHandler, visible,logoutHandler}) => {
+const ModalComponent = ({loginHandler, visible,cancelHandler}) => {
 
 return(
 
@@ -12,10 +12,10 @@ return(
 
             <View style = {styles.outerView}>
 
-            <Text style = {{fontSize:20, fontWeight:'bold', textAlign:'center',color:'orange', opacity:0.8}}>Registor now ?</Text>
+            <Text style = {{fontSize:20, fontWeight:'bold', textAlign:'center',color:'orange', opacity:0.8}}>Create Account successfully!!</Text>
 
 
-            <Text style = {{fontSize:16, fontWeight:'bold', textAlign:'center',color: 'grey',marginTop:10}}></Text>
+            <Text style = {{fontSize:16, fontWeight:'bold', textAlign:'center',color: 'grey',marginTop:10}}>Do you want to go to shop now?</Text>
 
 
             <View style = {styles.innerView}>
@@ -28,7 +28,7 @@ return(
                 </TouchableOpacity>
 
 
-                <TouchableOpacity onPress = {() => {logoutHandler()}} style = {styles.yesAndNoContainer}>
+                <TouchableOpacity onPress = {() => {cancelHandler()}} style = {styles.yesAndNoContainer}>
 
 
                     <Text style = {{color:'white', fontWeight:'bold', fontSize:18, textAlign:'center'}}>No</Text>
