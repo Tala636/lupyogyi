@@ -12,6 +12,19 @@ const data=[
   require('../assets/carousel/midgrf.png'),
   require('../assets/carousel/wore.png'),
 ];
+
+  const textindoor=[
+    {id:'1',txt:'စိတ်ခံစားချက်ကိုတိုးတက်စေခြင်း။'},
+    {id:'2',txt:'ပင်ပန်းနွမ်းနယ်မှုကို လျှော့ချပေးခြင်း။'},
+    {id:'3',txt:'ပင်ပန်းနွမ်းနယ်မှုကို လျှော့ချပေးခြင်း။'},
+    {id:'4',txt:'ပင်ပန်းနွမ်းနယ်မှုကို လျှော့ချပေးခြင်း။'},
+    {id:'5',txt:'ပင်ပန်းနွမ်းနယ်မှုကို လျှော့ချပေးခြင်း။'},
+    {id:'7',txt:'ပင်ပန်းနွမ်းနယ်မှုကို လျှော့ချပေးခြင်း။'},
+    {id:'8',txt:'ပင်ပန်းနွမ်းနယ်မှုကို လျှော့ချပေးခြင်း။'},
+
+  ]
+
+
     const screenWidth = Dimensions.get('window').width
  
 const Home=({navigation,route})=>{
@@ -78,31 +91,36 @@ const Home=({navigation,route})=>{
  return(
      <SafeAreaView style={{flex:1}}>
       
-      <View style={{flexDirection:'row',height:40,marginTop:50,justifyContent:'center',alignItems:'center'}}>
+      <View style={{flexDirection:'row',}}>
+      <View style={{flexDirection:'row',height:60,marginTop:50,justifyContent:'center',alignItems:'center'}}>
         
-         <View style={{flexDirection:'row',justifyContent:'center',backgroundColor:'white',alignItems:'center',height:40,width:320,borderRadius:15,borderWidth:0.5}}>
+        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height:40,width:350,borderRadius:15,borderWidth:0.5,marginLeft:20,marginRight:20}}>
 
-             <Image style={{width:25,height:25,position:'absolute',left:10}} source={require('../assets/icons/icons8-search-24.png')}/>
-             <TextInput style={{position:'absolute',left:40,width:210,height:50}}
-              placeholder="Search products"
-              keyboardType="web-search"
-              underlineColorAndroid={'transparent'}
-              onChangeText={(text)=>setSearchText(text)}
-              value={searchText}
-             />
-             { searchText===''? <View/>:
+            <Image style={{width:25,height:25,position:'absolute',left:10}} source={require('../assets/icons/icons8-search-24.png')}/>
+            <TextInput style={{position:'absolute',left:40,width:305,height:50,}}
+             placeholder="Search products"
+             keyboardType="web-search"
+             underlineColorAndroid={'transparent'}
+             onChangeText={(text)=>setSearchText(text)}
+             value={searchText}
+            />
+            { searchText===''? <View/>:
 
 <TouchableOpacity onPress={()=>Cross()} style={{position:'absolute',right:10}}>
 <Image source={require('../assets/icons/icons8-cross-sign-50.png')} style={{width:25,height:25,}}/>
 </TouchableOpacity>
-             
-             }
-         </View>
+            
+            }
+        </View>
+     </View>
+     
+     
+    
       </View>
       
      { searchText=== '' ?
-     <ScrollView style={{marginTop:10,}}>
-       <View style={{marginBottom:200}}>
+     <ScrollView style={{marginTop:5,}}>
+       <View style={{marginBottom:75,backgroundColor:'#8df7db'}}>
        <Text style={{fontSize:24,fontWeight:'bold',marginLeft:10,marginBottom:5}}>Welcome!</Text>
       <SliderBox images={data}
        dotColor="green"
@@ -123,11 +141,11 @@ const Home=({navigation,route})=>{
        ရာသီဥတုပြောင်းလဲမှုကို တိုက်ဖျက်ရန်၊ ဂေဟစနစ်များ ပြန်လည်ထူထောင်ရန်၊ လေထုအရည်အသွေးကို မြှင့်တင်ပေးပြီး မျိုးဆက်သစ်များအတွက် ရေရှည်တည်တံ့သော အနာဂတ်ကို မြှင့်တင်ပေးသောကြောင့် စိုက်ပျိုးခြင်းသည် ကျွန်ုပ်တို့၏ပတ်ဝန်းကျင်ကို ထိန်းသိမ်းရန်အတွက် အရေးကြီးပါသည်။
 
        </Text>
-       <View style={{flex:1,flexDirection:'row',marginVertical:15,justifyContent:'center',alignItems:'center',}}>
+       <View style={{flexDirection:'row',marginTop:20,justifyContent:'center',alignItems:'center',marginBottom:20}}>
       
-       <Text style={{fontSize:18,fontWeight:'900',position:'absolute',left:10,}}>Indoor plants</Text>
+       <Text style={{fontSize:20,fontWeight:'900',position:'absolute',left:10,}}>Indoor plants</Text>
        
-       <TouchableOpacity style={{position:'absolute',right:10,}}>
+       <TouchableOpacity onPress={()=>navigation.navigate('showItem4')} style={{position:'absolute',right:10,}}>
        <Image style={{width:45,height:45,}} source={require('../assets/icons/icons8-right-arrow-50.png')}/>
        </TouchableOpacity>
        </View>
@@ -149,16 +167,29 @@ const Home=({navigation,route})=>{
         showsHorizontalScrollIndicator={false}
         onScroll={handleScroll}
         />
-       <View style={{flexDirection:'row',position:'absolute',top:300,right:50}}>{renderIndicator()}</View>
+       <View style={{flexDirection:'row',position:'absolute',top:300,right:65}}>{renderIndicator()}</View>
        </View>
          
        
        <View style={{marginTop:20,alignItems:'center',justifyContent:'center',padding:5}} >
-        <Text>Indoor Plants</Text>
+        <Text style={{fontSize:16,fontWeight:'bold'}}>Indoor Plants</Text>
         <Text style={{marginTop:10}}>     အိမ်တွင်းအပင်များသည် ပိုမိုကျန်းမာပျော်ရွှင်စေပြီး
             စိတ်ပိုင်းဆိုင်ရာနှင့် ရုပ်ပိုင်းဆိုင်ရာကျန်းမာရေးဆိုင်ရာ
             အကျိုးကျေးဇူးများကို ပေးဆောင်သည်။</Text>
        </View>
+      
+         {
+          textindoor.map((item,index)=>{   
+          return(
+            <View key={index} style={{flexDirection:'row',alignItems:'center',height:50,borderStartColor:'white',marginVertical:3,marginLeft:20}}>
+          <Image style={{height:25,width:25}} source={require('../assets/icons/icons8-done-48.png')}/>
+          <Text>{item.txt}</Text>
+         </View>
+          )
+          })
+         }
+        
+      
 
        </View>
      </ScrollView>
@@ -168,7 +199,7 @@ const Home=({navigation,route})=>{
      
      :   
 
-     <View style={{marginTop:20}}> 
+     <View style={{marginTop:20,}}> 
        <FlatList 
         data={filterData}
        

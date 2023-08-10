@@ -4,7 +4,7 @@ import { colors } from "../constant/theme";
 const Proflie=({navigation,route})=>{
     return(
         <SafeAreaView style={{flex:1}}>
-          <View style={{backgroundColor:colors.primary,height:250,marginTop:40,flexDirection:'row',alignItems:'center',padding:10}}>
+          <View style={{backgroundColor:"#8df7db",height:250,marginTop:40,flexDirection:'row',alignItems:'center',padding:10}}>
             <Image style={{width:100,height:100,}} source={require('../assets/icons/icons8-user-40.png')}/>
             <View style={{flex:1,marginLeft:20,}}>
               <Text style={{fontSize:16,fontWeight:'bold'}}>Name : Mg Kyaw Gyi</Text>
@@ -67,12 +67,18 @@ const Proflie=({navigation,route})=>{
               <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/proflie/icons8-contact-us-32.png')}/>
               <Text>Contact us</Text>
             </TouchableOpacity>
-            
            </View>
-          
-           <TouchableOpacity style={{alignItems:'center',marginTop:30,height:50,backgroundColor:'white',justifyContent:'center'}}>
-            <Text style={{color:'red',fontWeight:'bold',fontSize:18}}>Log out</Text>
-           </TouchableOpacity>
+           <View style={{height:0.3,backgroundColor:'black'}}/>
+           <View style={{backgroundColor:'white',height:50,justifyContent:'center'}}>
+            <TouchableOpacity 
+            
+            onPress={()=>navigation.navigate('contact')}
+            
+            style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
+              <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/icons/icons8-logout-50.png')}/>
+              <Text>logout</Text>
+            </TouchableOpacity>
+           </View>
           </View>
          
         </SafeAreaView>

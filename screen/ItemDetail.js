@@ -7,27 +7,17 @@ import cartAction from '../stores/action/cart';
 import totalQtyAction from '../stores/action/qty';
 import wishListAction from '../stores/action/wishList';
 
-
-
-
-
-
-
-
-
 const Wid=Dimensions.get('screen').width;
 
-
-
-
-
-
+ 
  
 const ItemD=({navigation,route})=>{
-
+  const cartProducts=useSelector(state=>state.Cart)
+  const totalQty=useSelector(state=>state.TotalQty)
   let {product}=route.params;
    const [isInWishList,setIsInWishList]=useState(false)
    const [qty,setQty]=useState(1)
+    
    const dispatch =useDispatch()//redux..!
 
    useEffect(()=>{
@@ -52,6 +42,7 @@ const ItemD=({navigation,route})=>{
         }
       }
      })
+       
 
    },[])
 
@@ -76,7 +67,7 @@ const ItemD=({navigation,route})=>{
         let isInCart=null
 
         for(let i=0;i<cartProducts.lenght;i++){
-          totalQty +=cartProducts[i].qty
+          totalQty+=cartProducts[i].qty
 
           if(cartProducts[i]._id==prodItem._id){
             cartProducts[i].qty+=1
@@ -169,17 +160,17 @@ const ItemD=({navigation,route})=>{
     return(
     
     
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{flex:1,backgroundColor:'#8df7db'}}>
     <HeaderComponent navigation={navigation}/>
    
-    <View style={{alignItems:'center',marginTop:90,backgroundColor:'white',height:300,}}>
+    <View style={{alignItems:'center',marginTop:80,backgroundColor:'white',height:300,}}>
         
         <Image style={{width:"100%",height:"100%",padding:5,resizeMode:'cover'}} source={product.subImg}/>
         
       
    </View>
-   <View style={{alignItems:'center'}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>{product.name}</Text></View>
-   <View style={{alignItems:'center'}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>Price: {product.price * qty} mmk</Text></View>
+   <View style={{alignItems:'center',}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>{product.name}</Text></View>
+   <View style={{alignItems:'center',}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>Price: {product.price * qty} mmk</Text></View>
        <ScrollView>
         <View style={{backgroundColor:'white',marginHorizontal:10,padding:5,marginTop:10,marginBottom:120}}>
         <Text style={{fontSize:16,fontWeight:'bold',marginBottom:5}}>Light:</Text>
@@ -202,7 +193,7 @@ const ItemD=({navigation,route})=>{
        
         
         
-        <View style={{height:60,flexDirection:'row',alignItems:'center',justifyContent:'center',position:'absolute',bottom:0,backgroundColor:'white',width:Wid}}>
+        <View style={{height:60,flexDirection:'row',alignItems:'center',justifyContent:'center',position:'absolute',bottom:0,backgroundColor:'#17692e',width:Wid}}>
          <View style={{flexDirection:'row',position:'absolute',left:15}}>
          <Text style={{fontWeight:'bold',}}>Amount:</Text>
           <Text style={{marginLeft:10}}>{qty}</Text>
@@ -216,28 +207,35 @@ const ItemD=({navigation,route})=>{
            
             </TouchableOpacity>
          
-          <View style={{flexDirection:'row',marginLeft:40}}>
+          <View style={{flexDirection:'row',marginLeft:40,}}>
 
 
          
             <TouchableOpacity onPress={()=>{clickPlus()}} style={{marginRight:10}}>
-                <Image style={{width:30,height:30}} source={require('../assets/icons/icons8-plus-50.png')} />
+                <Image style={{width:30,height:30,tintColor:'orange'}} source={require('../assets/icons/icons8-plus-50.png')} />
             </TouchableOpacity>
             
             <TouchableOpacity onPress={()=>{clickMinus()}}>
-                <Image style={{width:30,height:30}} source={require('../assets/icons/icons8-minus-sign-64.png')}/>
+                <Image style={{width:30,height:30,tintColor:'orange'}} source={require('../assets/icons/icons8-minus-sign-64.png')}/>
             </TouchableOpacity>
 
             
           </View>
-          <TouchableOpacity onPress={()=>{saveTocart(product)}} style={{backgroundColor:'red',alignItems:'center',height:40,justifyContent:'center',position:'absolute',right:20,padding:5,borderRadius:5}}>
-            <Text>Add to cart</Text>
+          <TouchableOpacity onPress={()=>{saveTocart(product)}} style={{backgroundColor:'white',alignItems:'center',height:40,justifyContent:'center',position:'absolute',right:20,padding:10,borderRadius:15}}>
+            <Text style={{fontWeight:'bold'}}>Add to cart</Text>
           </TouchableOpacity>
         </View>
         
-        
-           
-        
+
+        <View style={{position:'absolute',top:390,right:20,}}>
+            <TouchableOpacity onPress={()=>{saveTowishList(product)}}  style={{}}>
+                  {
+                    isInWishList ? 
+                    <Image style={{tintColor:'red',width:45,height:45,}} source={require('../assets/icons/icons8-heart-30.png')} />
+                    :
+                    <Image style={{tintColor:'black',width:45,height:45,}} source={require('../assets/icons/icons8-heart-30.png')} />
+                  }
+
 
         
 

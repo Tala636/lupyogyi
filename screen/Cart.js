@@ -16,12 +16,9 @@ const Wid =Dimensions.get('screen').width;
 
 const Cart=({navigation,route})=>{
 
-   const [qty,setQty]=useState()
   let cartProducts=useSelector(state=>state.Cart)
   let totalQty=useSelector(state=>state.totalQty)
   const dispatch =useDispatch()
- 
-  // console.log("cart",cartProducts[0].description)
 
   useEffect(()=>{
 
@@ -65,6 +62,7 @@ const Cart=({navigation,route})=>{
     const clickMinus=(minProd)=>{
       const index =cartProducts.findIndex(prod=>prod==minProd)
 
+
       if (cartProducts[index].qty > 1) {
         const updatedCartProducts = [...cartProducts]; 
         updatedCartProducts[index] = {
@@ -79,6 +77,7 @@ const Cart=({navigation,route})=>{
     
         AsyncStorage.setItem('cartTotalQty', JSON.stringify(newTotalQty));
         dispatch(totalQtyAction.setTotalQty(newTotalQty));
+
       }
       else{
         deleteHandle(minProd)
@@ -88,6 +87,7 @@ const Cart=({navigation,route})=>{
 
     const clickPlus=(plusProd)=>{
       let index =cartProducts.findIndex(prod=>prod==plusProd)
+
 
       const updatedCartProducts = [...cartProducts]; 
   updatedCartProducts[index] = {
@@ -100,12 +100,13 @@ const Cart=({navigation,route})=>{
 
   const newTotalQty = updatedCartProducts[index].qty;
 
+
   AsyncStorage.setItem('cartTotalQty', JSON.stringify(newTotalQty));
   dispatch(totalQtyAction.setTotalQty(newTotalQty));
 };
 
     const deleteHandle=(delItem)=>{
-      let index =cartProducts.findIndex(prod=> prod !==delItem)
+      let index =cartProducts.findIndex(prod=>prod==delItem)
 
       let leftData =[]
       AsyncStorage.getItem('cart').then((res)=>{
@@ -203,9 +204,9 @@ cartProducts?.forEach(item => {
 
 
     return(
-        <SafeAreaView style={{flex:1}}>
+        <SafeAreaView style={{flex:1,backgroundColor:'#8df7db'}}>
         
-          <View style={{height:50,marginTop:35,justifyContent:'center',}}>
+          <View style={{height:50,marginTop:35,justifyContent:'center',backgroundColor:'#8df7db'}}>
             <TouchableOpacity 
              onPress={() => {deleteAll(),Alert.alert("Deleted all item from cart")}}
             style={{position:'absolute',right:10,backgroundColor:'red',padding:10,borderRadius:10}}>
@@ -221,19 +222,19 @@ cartProducts?.forEach(item => {
            return(
              <View key={index} style={{flexDirection:'row',height:120 ,justifyContent:'center',backgroundColor:'white',marginTop:5,alignItems:'center',marginHorizontal:5,borderRadius:5,elevation:5,shadowColor:'black',marginBottom:5}}>
            <View style={{width:Wid/2,}}>
-           <Image style={{width:'85%',height:'99%',marginLeft:25}} source={item.subImg}/>
+           <Image style={{width:'85%',height:'99%',marginLeft:10}} source={item.subImg}/>
            </View>
-           <View style={{width:Wid/2,marginRight:35}}>
-             <Text style={{marginBottom:15,fontSize:16,}}>{item.name}</Text>
-             <Text style={{marginBottom:10}}>Price:{item.price} mmk</Text>
+           <View style={{width:Wid/2,marginRight:10}}>
+             <Text style={{marginBottom:10,fontSize:16,}}>{item.name}</Text>
+             <Text style={{marginBottom:20}}>Price:{item.price} mmk</Text>
              
              <View style={{flexDirection:'row',}}>
              <TouchableOpacity onPress={()=>{clickPlus(item)}}>
-               <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/icons/icons8-plus-50.png')}/>
+               <Image style={{width:25,height:25,marginRight:10,tintColor:'orange'}} source={require('../assets/icons/icons8-plus-50.png')}/>
              </TouchableOpacity>
                <Text style={{marginRight:10}}>{item.qty}</Text>
                <TouchableOpacity onPress={()=>{clickMinus(item)}}>
-               <Image  style={{width:25,height:25}} source={require('../assets/icons/icons8-minus-sign-64.png')}/>
+               <Image  style={{width:25,height:25,tintColor:'orange'}} source={require('../assets/icons/icons8-minus-sign-64.png')}/>
                </TouchableOpacity>
              </View>
            </View>

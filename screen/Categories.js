@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView,View,TouchableOpacity,Text,Image,FlatList,ScrollView } from "react-native";
+import { SafeAreaView,View,TouchableOpacity,Text,Image,FlatList,ScrollView,Dimensions } from "react-native";
 import BottomTabComponent from "../Components/Bottom";
 import HeaderComponent from "../Components/HeaderComponent";
 
@@ -32,22 +32,21 @@ plantCateName: "နှစ်ရှည်သီးပင်စားပင်မ�
 
  }
   
-
-  
 ]
-
+   const screenWidth=Dimensions.get("screen").width
 
 const Category=({navigation,route})=>{
     return(
         <SafeAreaView style={{flex:1}}>
-        
-         
-        <View style={{alignItems:'center',justifyContent:'center',marginTop:100}}>
+        <View style={{backgroundColor:'#8df7db'}}>
+        <View style={{alignItems:'center',justifyContent:'center',marginTop:50,}}>
+          <Text style={{marginBottom:15,fontSize:24,fontWeight:'bold'}}>Categories</Text>
           <FlatList
              data={Items}
              renderItem={({item,index})=>{
               return(
-                <View style={{alignItems:'center',justifyContent:'center',padding:10}}>
+                <View style={{backgroundColor:'white'}}>
+                  <Text style={{fontSize:16,fontWeight:'bold',marginVertical:5,marginLeft:10}}>{item.plantCateName}</Text>
                 <TouchableOpacity
                 onPress={()=>{
                  switch(item._id){
@@ -60,22 +59,22 @@ const Category=({navigation,route})=>{
                    
                  }
                 }}
-                style={{height:500,width:350,marginHorizontal:5,backgroundColor:'white',elevation:5,borderRadius:20,marginLeft:10}}
+                style={{height:190,width:screenWidth,backgroundColor:'white',elevation:5,}}
                 key={index}>
-                  <View style={{alignItems:'center',justifyContent:'center'}}>
-                    <Image style={{height:'100%',width:'100%',borderRadius:20}} source={item.img2}/>
+                  <View style={{flex:1,alignItems:'center',justifyContent:'center',marginVertical:20}}>
+                    <Image style={{height:190,width:'100%',}} source={item.img2}/>
                     
                   </View>
                 </TouchableOpacity>
 
 
-                <Text style={{marginTop:20,fontSize:20,fontWeight:'bold'}}>{item.plantCateName}</Text>
+                
                 </View>
               )
              }}
 
              keyExtractor={(item,index)=>index.toString()}
-             horizontal
+             
              showsHorizontalScrollIndicator={false}
 
 
@@ -86,6 +85,7 @@ const Category=({navigation,route})=>{
 
           
          </View>
+        </View>
           
         
          

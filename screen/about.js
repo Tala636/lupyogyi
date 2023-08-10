@@ -8,7 +8,7 @@ import React from "react";
 
         <BackHead navigation={navigation}/>
 
-    <View style={{marginTop:90}}>
+    <View style={{marginTop:80}}>
 
         <View style = {styles.aboutUsContainer}>
 
