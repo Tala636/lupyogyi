@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView,View,TouchableOpacity,Text,Image,FlatList,ScrollView,Dimensions } from "react-native";
+import { SafeAreaView,View,TouchableOpacity,Text,Image,FlatList,ScrollView,Dimensions,StatusBar } from "react-native";
 import BottomTabComponent from "../Components/Bottom";
 import HeaderComponent from "../Components/HeaderComponent";
 
@@ -38,8 +38,11 @@ plantCateName: "နှစ်ရှည်သီးပင်စားပင်မ�
 const Category=({navigation,route})=>{
     return(
         <SafeAreaView style={{flex:1}}>
+         <StatusBar
+          backgroundColor={'#8df7db'}
+          />
         <View style={{backgroundColor:'#8df7db'}}>
-        <View style={{alignItems:'center',justifyContent:'center',marginTop:50,}}>
+        <View style={{alignItems:'center',justifyContent:'center',marginTop:20,}}>
           <Text style={{marginBottom:15,fontSize:24,fontWeight:'bold'}}>Categories</Text>
           <FlatList
              data={Items}
@@ -87,8 +90,7 @@ const Category=({navigation,route})=>{
          </View>
         </View>
           
-        
-         
+    
           <BottomTabComponent navigation={navigation} ScreenName="CategoScreen"/>
         </SafeAreaView>
     )

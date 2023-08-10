@@ -36,7 +36,7 @@ const HeaderComponent=({navigation})=>{
     return(
 
 
-        <SafeAreaView style={{elevation:5,height:40,backgroundColor:'#17692e',width:Wid,position:'absolute',top:35,padding:5}}>
+        <SafeAreaView style={{elevation:5,height:40,backgroundColor:'#17692e',width:Wid,padding:5}}>
             <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',justifyContent:'space-between'}}>
 
          <TouchableOpacity 

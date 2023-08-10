@@ -206,23 +206,25 @@ cartProducts?.forEach(item => {
     return(
         <SafeAreaView style={{flex:1,backgroundColor:'#8df7db'}}>
         
-          <View style={{height:50,marginTop:35,justifyContent:'center',backgroundColor:'#8df7db'}}>
+          <View style={{height:50,marginTop:15,justifyContent:'center',backgroundColor:'#8df7db'}}>
             <TouchableOpacity 
              onPress={() => {deleteAll(),Alert.alert("Deleted all item from cart")}}
             style={{position:'absolute',right:10,backgroundColor:'red',padding:10,borderRadius:10}}>
-              <Text>Clear all</Text>
+              <Text style={{color:'white'}}>Clear all</Text>
             </TouchableOpacity>
           </View>
-         <View style={{marginBottom:199,}}>
+         <View style={{marginBottom:174,}}>
         {cartProducts?.length>0 ?
          <FlatList style={{marginBottom:10}}
           
          data={cartProducts}
          renderItem={({item,index})=>{
            return(
-             <View key={index} style={{flexDirection:'row',height:120 ,justifyContent:'center',backgroundColor:'white',marginTop:5,alignItems:'center',marginHorizontal:5,borderRadius:5,elevation:5,shadowColor:'black',marginBottom:5}}>
+             <TouchableOpacity 
+             onPress={() => navigation.navigate('detail',{product:item})}
+             key={index} style={{flexDirection:'row',height:120 ,justifyContent:'center',backgroundColor:'white',marginTop:5,alignItems:'center',marginHorizontal:5,borderRadius:10,elevation:5,shadowColor:'black',marginBottom:5}}>
            <View style={{width:Wid/2,}}>
-           <Image style={{width:'85%',height:'99%',marginLeft:10}} source={item.subImg}/>
+           <Image style={{width:'85%',height:'99%',marginLeft:10,borderRadius:10,}} source={item.subImg}/>
            </View>
            <View style={{width:Wid/2,marginRight:10}}>
              <Text style={{marginBottom:10,fontSize:16,}}>{item.name}</Text>
@@ -243,7 +245,7 @@ cartProducts?.forEach(item => {
            style={{position:'absolute',top:0,right:0,backgroundColor:'#d7dade',borderRadius:50}}>
              <Image  style={{width:35,height:35}} source={require('../assets/icons/icons8-cross-sign-50.png')}/>
            </TouchableOpacity>
-         </View>
+         </TouchableOpacity>
            )
          }}
          keyExtractor={(item,index)=>index.toString()}
@@ -261,18 +263,19 @@ cartProducts?.forEach(item => {
 
         }
          </View>
-          <View style={{height:60,backgroundColor:'white',position:'absolute',bottom:62,flexDirection:'row',width:Wid,alignItems:'center',}}>
+          <View style={{height:60,backgroundColor:'#17692e',position:'absolute',bottom:60,flexDirection:'row',width:Wid,alignItems:'center',
+           borderTopLeftRadius:20,borderTopRightRadius:20,}}>
             <View style={{flexDirection:'row',marginLeft:10}}>
              
-                <Text style={{marginRight:20,fontWeight:'bold'}}>Total cost:</Text>
-                <Text> {totalPrice}mmk</Text>
+                <Text style={{marginRight:20,fontWeight:'bold',color:'white',fontSize:16}}>Total cost:</Text>
+                <Text style={{color:'white'}}> {totalPrice}mmk</Text>
              
             </View>
             <TouchableOpacity onPress={()=>  Alert.alert('', 'Are you sure want to buy', [
        
        {text: 'OK', onPress: () => BuyItem(cartProducts)},
-     ])} style={{position:'absolute',right:20,backgroundColor:'orange',height:40,width:100,alignItems:'center',justifyContent:'center',borderRadius:25}}>
-                <Text style={{color:'white',fontWeight:'bold'}}>Buy</Text>
+     ])} style={{position:'absolute',right:20,backgroundColor:'white',height:40,width:100,alignItems:'center',justifyContent:'center',borderRadius:25}}>
+                <Text style={{color:'#17692e',fontWeight:'bold'}}>Buy</Text>
             </TouchableOpacity>
            
           </View>

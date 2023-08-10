@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView,View,TouchableOpacity,Image,Text,FlatList,Dimensions  } from "react-native";
+import { SafeAreaView,View,TouchableOpacity,Image,Text,FlatList,Dimensions,StatusBar  } from "react-native";
 import HeaderComponent from "../Components/HeaderComponent";
 import Plants from "../Products/Plants";
  const Wid=Dimensions.get('screen').width;
@@ -9,9 +9,13 @@ import Plants from "../Products/Plants";
 const ShowItems3=({navigation,route})=>{
     return(
         <SafeAreaView style={{flex:1}}>
+        <StatusBar
+          backgroundColor={'#17692e'}
+          />
         <HeaderComponent navigation={navigation}/>
-         <View style={{flex:1,marginTop:80,backgroundColor:'#8df7db'}}>
-         <Text style={{marginBottom:10,fontSize:18,fontWeight:"bold",width:Wid,textAlign:'center'}}>စက်မှုကုန်ကြမ်းသုံး အပင်များ</Text>
+        
+         <View style={{flex:1,backgroundColor:'#8df7db'}}>
+         <Text style={{marginBottom:10,fontSize:18,marginTop:20,fontWeight:"bold",width:Wid,textAlign:'center'}}>စက်မှုကုန်ကြမ်းသုံး အပင်များ</Text>
            <FlatList 
            style={{}}
             data={Plants}
