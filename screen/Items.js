@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import { SafeAreaView,View,TouchableOpacity,Image,Text,FlatList,Dimensions, BackHandler, } from "react-native";
+import { SafeAreaView,View,TouchableOpacity,Image,Text,FlatList,Dimensions, BackHandler,StatusBar } from "react-native";
 import HeaderComponent from "../Components/HeaderComponent";
 import Flowers from "../Products/Flowers";
 
@@ -10,10 +10,13 @@ const ShowItems=({navigation,route})=>{
 
     return(
         <SafeAreaView style={{flex:1}}>
+          <StatusBar
+          backgroundColor={'#17692e'}
+          />
         <HeaderComponent navigation={navigation}/>
         
-         <View style={{flex:1,marginTop:80,backgroundColor:'#8df7db'}}>
-         <Text style={{marginBottom:10,fontSize:18,fontWeight:"bold",width:Wid,textAlign:'center',}}>ဥယျာဉ်ခြံပန်းမန်အပင်များ</Text>
+         <View style={{flex:1,backgroundColor:'#8df7db'}}>
+         <Text style={{marginBottom:10,fontSize:18,fontWeight:"bold",width:Wid,textAlign:'center',marginTop:20}}>ဥယျာဉ်ခြံပန်းမန်အပင်များ</Text>
            <FlatList 
            style={{}}
             data={Flowers}

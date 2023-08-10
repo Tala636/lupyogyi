@@ -20,31 +20,27 @@ const ItemD=({navigation,route})=>{
     
    const dispatch =useDispatch()//redux..!
 
-   useEffect(()=>{
-     AsyncStorage.getItem('wishList').then((res)=>{
-      const wishListData =JSON.parse(res)
-      if(wishListData==null){
+   useEffect (() =>{
+    AsyncStorage.getItem('wishlist').then((res) =>{
+      const wishListData = JSON.parse(res)
+      if(wishListData == null){
         setIsInWishList(false)
-      }
-      else{
-        let isWishListId=null
-        for(let i=0;i<wishListData.lenght;i++){
-          if(wishListData[i]._id==product._id){
-            isWishListId=product._id
+      }else{
+        let isWishListId = null
+        for(let i=0;i<wishListData.length; i++){
+          if(wishListData[i]._id == product._id){
+            isWishListId = product._id
           }
-          
         }
-        if(isWishListId==null){
+        if(isWishListId != null){
           setIsInWishList(true)
-        }
-        else{
+        }else{
           setIsInWishList(false)
         }
       }
-     })
-       
+    })
+  },[route])
 
-   },[])
 
    const saveTocart=(prodItem)=>{
     
@@ -108,70 +104,78 @@ const ItemD=({navigation,route})=>{
       setQty(qty+1)
     }
 
-    const saveTowishList=(wishListItem)=>{
+    const addToWishList = (product) =>{
 
       if(isInWishList){
-        AsyncStorage.getItem('wishList').then((res)=>{
-          const wishListData=JSON.parse(res)
-
-          let wishListArr=[]
-          if(wishListData!=null){
-             wishListArr=wishListData.filter(prod=>prod._id!=wishListItem._id)
-            
+        AsyncStorage.getItem('wishlist').then((res)=>{
+          const wishListData = JSON.parse(res)
+          let products =[]
+          if(wishListData != null){
+            products = wishListData.filter(prod => prod._id != product._id)
           }
-          AsyncStorage.setItem('wishList',JSON.stringify(wishListArr))
-          dispatch(wishListAction.addToWishList(wishListArr))
+          AsyncStorage.setItem('wishlist', JSON.stringify(products))
+          dispatch(wishListAction.addToWishList(products))
         })
         setIsInWishList(false)
       }
       else{
-        AsyncStorage.getItem('wishList').then((res)=>{
-          const wishListData=JSON.parse(res)
-          let wishListArr=[]
-          if(wishListData==null){
-            wishListArr.push(wishListItem)
-
-            AsyncStorage.setItem('wishList',JSON.stringify(wishListArr))
-            dispatch(wishListAction.addToWishList(wishListArr))
-          }
-          else{
-            let isWishListId=null
-            for(let i=0;i<wishListData.lenght;i++){
-              if(wishListData[i]._id==wishListItem._id){
-                isWishListId=wishListItem._id
+        AsyncStorage.getItem('wishlist').then((res) =>{
+          
+          const wishListData = JSON.parse(res)
+          let products =[]
+          if(wishListData == null){
+            products.push(product)
+  
+            dispatch(wishListAction.addToWishList(products))
+            AsyncStorage.setItem('wishlist', JSON.stringify(products))
+  
+          }else{
+            let isWishListId = null
+            for(let i=0; i<wishListData.length; i++){
+              if(wishListData[i]._id == products._id){
+                isWishListId = product._id
               }
             }
-            console.log('is Id null....',isWishListId)
-            if(isWishListId==null){
-              wishListData.push(wishListItem)
-            }
-            AsyncStorage.setItem('wishList',JSON.stringify(wishListData))
-            dispatch(wishListAction.addToWishList(wishListData))
+            console.log("Is ID null? ", isWishListId)
+            
+           if(isWishListId == null){
+             wishListData.push(product)
+           }
+           AsyncStorage.setItem('wishlist', JSON.stringify(wishListData))
+           dispatch(wishListAction.addToWishList(wishListData))
           }
           setIsInWishList(true)
-
         })
       }
-
     }
+  
 
     
     
     return(
     
     <SafeAreaView style={{flex:1,backgroundColor:'#8df7db'}}>
-    <HeaderComponent navigation={navigation}/>
+    {/* <HeaderComponent navigation={navigation}/> */}
    
-    <View style={{alignItems:'center',marginTop:80,backgroundColor:'white',height:300,}}>
+    <View style={{alignItems:'center',backgroundColor:'#8df7d',height:300,}}>
         
-        <Image style={{width:"100%",height:"100%",padding:5,resizeMode:'cover'}} source={product.subImg}/>
+        <Image style={{width:"100%",height:"100%",padding:5,resizeMode:'cover',borderBottomLeftRadius:25,
+      borderBottomRightRadius:25,}} source={product.subImg}/>
         
-      
+      <TouchableOpacity 
+      onPress={() => navigation.goBack()}
+      style={{
+        position:'absolute',left:10,top:30,borderRadius:50,width:40,height:40,
+        justifyContent:'center',alignItems:'center',backgroundColor:'#b2b7bf'
+      }}>
+        <Image source={require('../assets/icons/icons8-back-50.png')} style={{width:20,height:20}}/>
+
+      </TouchableOpacity>
    </View>
-   <View style={{alignItems:'center',}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>{product.name}</Text></View>
+   <View style={{alignItems:'center',}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold',}}>{product.name}</Text></View>
    <View style={{alignItems:'center',}}><Text style={{marginTop:5,fontSize:18,fontWeight:'bold'}}>Price: {product.price * qty} mmk</Text></View>
        <ScrollView>
-        <View style={{backgroundColor:'white',marginHorizontal:10,padding:5,marginTop:10,marginBottom:120}}>
+        <View style={{marginHorizontal:10,padding:5,marginTop:10,marginBottom:120}}>
         <Text style={{fontSize:16,fontWeight:'bold',marginBottom:5}}>Light:</Text>
         <Text>{product.light}</Text>
         <Text style={{fontSize:16,fontWeight:'bold',marginBottom:5}}>Soil:</Text>
@@ -192,14 +196,16 @@ const ItemD=({navigation,route})=>{
        
         
         
-        <View style={{height:60,flexDirection:'row',alignItems:'center',justifyContent:'center',position:'absolute',bottom:0,backgroundColor:'#17692e',width:Wid}}>
+        <View style={{height:60,flexDirection:'row',alignItems:'center',
+        justifyContent:'center',position:'absolute',bottom:0,backgroundColor:'#17692e',width:Wid,
+        borderTopLeftRadius:15,borderTopRightRadius:15}}>
          <View style={{flexDirection:'row',position:'absolute',left:15}}>
-         <Text style={{fontWeight:'bold',}}>Amount:</Text>
-          <Text style={{marginLeft:10}}>{qty}</Text>
+         <Text style={{fontWeight:'bold',color:'white'}}>Amount:</Text>
+          <Text style={{marginLeft:10,color:'white'}}>{qty}</Text>
          </View>
 
-         <TouchableOpacity onPress={()=>{saveTowishList(product),
-         Alert.alert(isInWishList? "Add to fav " : "Remove from Fav")}}  style={{}}>
+         <TouchableOpacity onPress={()=>{ addToWishList(product),
+         Alert.alert(isInWishList? "Removed form Favourite" : "Added to Favourite List")}}  style={{}}>
                  
                     <Image style={{tintColor: isInWishList?'red': 'yellow',width:30,height:30,}} source={require('../assets/icons/icons8-heart-30.png')} />
                    

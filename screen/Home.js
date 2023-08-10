@@ -92,7 +92,7 @@ const Home=({navigation,route})=>{
      <SafeAreaView style={{flex:1}}>
       
       <View style={{flexDirection:'row',}}>
-      <View style={{flexDirection:'row',height:60,marginTop:50,justifyContent:'center',alignItems:'center'}}>
+      <View style={{flexDirection:'row',height:60,marginTop:20,justifyContent:'center',alignItems:'center'}}>
         
         <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height:40,width:350,borderRadius:15,borderWidth:0.5,marginLeft:20,marginRight:20}}>
 

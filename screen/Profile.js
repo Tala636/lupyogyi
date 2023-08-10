@@ -39,7 +39,7 @@ const Proflie=({navigation,route})=>{
            <View style={{height:0.3,backgroundColor:'black'}}/>
            <View style={{backgroundColor:'white',height:50,justifyContent:'center'}}>
             <TouchableOpacity 
-            onPress={()=>navigation.navigate('favorite')}
+            onPress={()=>navigation.navigate('Favourite')}
             style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
               <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/proflie/icons8-heart-32.png')}/>
               <Text>My Favorite</Text>
