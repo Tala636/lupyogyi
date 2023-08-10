@@ -15,7 +15,7 @@ export default[
         name: "ဂန္ဓမာပန်း",
         subImg: {uri:"https://images.unsplash.com/photo-1569090876737-30e9e1cbcded?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80"},
         price: "3000",
-        qty:1
+        qty:"1",
         
         },
         {
@@ -34,7 +34,7 @@ export default[
         name: "တော်ဝင်သဇင်ပန်း",
         subImg: {uri:"https://i.pinimg.com/736x/9a/88/e7/9a88e78ffeff94b3fc1293ea18f9c44a.jpg"},
         price: "4000 ",
-        qty:1
+        qty:"1",
         
       },
         {
@@ -53,7 +53,7 @@ export default[
         name: "လီလီပန်း",
         subImg: {uri:"https://i.pinimg.com/564x/1a/24/ce/1a24cec64eebc84f29a899a5e3c2fa7f.jpg"},
         price: "35000",
-        qty:1
+        qty:"1",
         },
         {
        
@@ -71,7 +71,7 @@ export default[
         name: "ပိန်းပန်း",
         subImg: {uri:"https://i.pinimg.com/564x/20/fb/ba/20fbba5f9b75fab9e6af2b9ddb636783.jpg"},
         price: "45000",
-        qty:1
+        qty:"1",
         
         },
         {
@@ -90,7 +90,7 @@ export default[
         name: "နှင်းဆီအဖြူ",
         subImg: {uri:"https://i.pinimg.com/564x/fb/dd/60/fbdd60a5cfd434dd2e770cb5decafa4e.jpg"},
         price: "5500",
-        qty:1
+        qty:"1",
         
         },
         {
@@ -109,7 +109,7 @@ export default[
         name: "ကံ့ကော်ပန်း",
         subImg: {uri:"https://i.pinimg.com/564x/62/24/ad/6224ad672b3c25b1f40dfb09d22879c9.jpg"},
         price: "3000",
-        qty:1
+        qty:"1",
         
         },
         {
@@ -128,7 +128,7 @@ export default[
         name: "ကန္တာရနှင်းဆီ",
         subImg: {uri:"https://i.pinimg.com/564x/43/83/f3/4383f31bf2f184efe5f6279ebce6aead.jpg"},
         price: "3000",
-        qty:1
+        qty:"1",
         
         },
         {
@@ -147,7 +147,7 @@ export default[
         name: "ငွေပန်းပျိုးပင်",
         subImg: {uri:"https://i.pinimg.com/564x/ae/60/66/ae60666d64c6b85ab29f0c00526cd0da.jpg"},
         price: "3500",
-        qty:1
+        qty:"1",
         
         },
         {
@@ -164,7 +164,7 @@ export default[
             name: "ကြက်မောက်ကိုင်းဆက်",
             price: "9000",
             subImg: {uri:"https://5.imimg.com/data5/ANDROID/Default/2020/9/GA/PE/OI/41819292/product-jpeg-500x500.jpeg"},
-            qty:1,
+            qty:"1",
             __v: 0
             },
             {
@@ -181,7 +181,7 @@ export default[
             name: "ဒူးရင်းကိုင်းဆက်",
             price: "12000",
             subImg: {uri:"https://newnessplant.in/wp-content/uploads/2022/08/5935241_orig-510x680.jpg"},
-            qty:1,
+            qty:"1",
             __v: 0
             },
             {
@@ -198,7 +198,7 @@ export default[
             name: "ပတ္တမြားကျွဲကော",
             price: "7500",
             subImg: {uri:"https://i.etsystatic.com/36443250/r/il/c56a91/4029730181/il_fullxfull.4029730181_b4k8.jpg"},
-            qty:1,
+            qty:"1",
             __v: 0
             },
             {
@@ -215,7 +215,7 @@ export default[
             name: "မင်းကွတ်ကိုင်းဆက်",
             price: "5000",
             subImg: {uri:"https://lunti.ph/cdn/shop/products/mangosteen_grafted_grande.jpg?v=1533007810"},
-            qty:1,
+            qty:"1",
             __v: 0
             },
             {
@@ -232,7 +232,7 @@ export default[
             name: "ရေငန်းသီးအပင်",
             price: "5000",
             subImg: {uri:"https://www.nparks.gov.sg/-/media/ffw/migrated/round2/flora/3289/f8845b0d6ec2410c9d32dabdc2e94c86.ashx"},
-            qty:1,
+            qty:"1",
             __v: 0
             },
             {
@@ -249,7 +249,7 @@ export default[
             name: "စိန်တစ်လုံးသရက်",
             price: "3000",
             subImg: {uri:"https://plantogram.com/wa-data/public/shop/products/55/06/655/images/1618/1618.750@2x.jpg"},
-            qty:1,
+            qty:"1",
             __v: 0
             },
             {
@@ -266,7 +266,7 @@ export default[
             name: "စပျစ်ပျိုးပင်",
             price: "1700",
             subImg: {uri:"https://i.pinimg.com/564x/1d/80/c4/1d80c40addcd73b75e4e0d04ddca23bb.jpg"},
-            qty:1,
+            qty:"1",
             __v: 0
             },
             {
@@ -283,7 +283,7 @@ export default[
             name: "ဩဇာပျိုးပင်",
             price: "2000",
             subImg: {uri:"https://i.pinimg.com/564x/36/06/ac/3606ac75cb7200ccd51ef3f52c0a08ce.jpg"},
-            qty:1,
+            qty:"1",
             __v: 0
             },
             {
@@ -300,7 +300,7 @@ export default[
                 subImg: {uri:"https://greenway.sgp1.digitaloceanspaces.com/post_covers/a5246d13f817b4a1fde2e36fe4df588a.jpg"},
                 price: "1200",
                 type: "raw",
-                __v: 0
+                qty:"1",
                 },
                 {
                 
@@ -317,7 +317,7 @@ export default[
                 subImg: {uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbOHKxIHW9y4cYC86delfkUlIwb85WsqGZaQ&usqp=CAU"},
                 price: "2000",
                 type: "raw",
-                __v: 0
+                qty:"1",
                 },
                 {
       
@@ -332,7 +332,7 @@ export default[
                   name: "Swiss cheese",
                   subImg: {uri:"https://i.pinimg.com/564x/71/57/21/715721cef5bcf33a255a0b5480e27d1e.jpg"},
                   price: "15000",
-                  __v: 0
+                  qty:"1",
                   },
                   {
                  
@@ -347,7 +347,7 @@ export default[
                   name: "Lucky Bamboo",
                   subImg: {uri:"https://i.pinimg.com/564x/94/54/64/945464884f56a33acba36c2a3df8c156.jpg"},
                   price: "12500",
-                  __v: 0
+                  qty:"1",
                   },
                   {
                  
@@ -362,7 +362,7 @@ export default[
                   name: "Zebra",
                   subImg: {uri:"https://i.pinimg.com/564x/57/dc/6e/57dc6e2a6bc90f253246f72ba0b34861.jpg"},
                   price: "12000",
-                  __v: 0
+                  qty:"1",
                   },
                   {
                  
@@ -377,7 +377,7 @@ export default[
                   name: "Lunaria",
                   subImg: {uri:"https://i.pinimg.com/564x/65/46/be/6546beb010b120ddfdf51b66b06cd66b.jpg"},
                   price: "16000",
-                  __v: 0
+                  qty:"1",
                   },
                   {
                  
@@ -392,7 +392,7 @@ export default[
                   name: "Golden barrel cactus",
                   subImg: {uri:"https://i.pinimg.com/564x/0e/68/a7/0e68a7f130ae1f50718b76091525069a.jpg"},
                   price: "25000",
-                  __v: 0
+                  qty:"1",
                   },
                   {
                   
@@ -407,7 +407,7 @@ export default[
                   name: "Oxalis",
                   subImg: {uri:"https://i.pinimg.com/564x/19/40/e8/1940e8096934aeea8eaa060ff0186661.jpg"},
                   price: "16500",
-                  __v: 0
+                  qty:"1",
                   },
                   {
                   
@@ -422,7 +422,7 @@ export default[
                   name: "Zanzibar gem",
                   subImg: {uri:"https://i.pinimg.com/564x/4d/42/5a/4d425af9191c60775331d675ee9b1b3f.jpg"},
                   price: "8000",
-                  __v: 0
+                  qty:"1",
                   },
                   {
                   
@@ -437,7 +437,7 @@ export default[
                   name: "Jade",
                   subImg: {uri:"https://i.pinimg.com/564x/83/f7/6e/83f76e6beac56a7e0570f68fae9d53a2.jpg"},
                   price: "4000",
-                  __v: 0
+                  qty:"1",
                   },
                   {
                   
@@ -452,6 +452,6 @@ export default[
                   name: "Mexican snowball",
                   subImg: {uri:"https://i.pinimg.com/564x/a5/e9/56/a5e95689ef412b5a85d5abc9cc3bc67f.jpg"},
                   price: "4000",
-                  __v: 0
+                  qty:"1",
                   }
 ]

@@ -14,7 +14,7 @@ export default [
     subImg: {uri:"https://greenway.sgp1.digitaloceanspaces.com/post_covers/a5246d13f817b4a1fde2e36fe4df588a.jpg"},
     price: "1200",
     type: "raw",
-    __v: 0
+    qty:"1",
     },
     {
     
@@ -31,6 +31,6 @@ export default [
     subImg: {uri:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbOHKxIHW9y4cYC86delfkUlIwb85WsqGZaQ&usqp=CAU"},
     price: "2000",
     type: "raw",
-    __v: 0
+    qty:"1",
     }
     ]

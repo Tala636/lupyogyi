@@ -15,7 +15,7 @@ export default[
       name: "ဂန္ဓမာပန်း",
       subImg: {uri:"https://images.unsplash.com/photo-1569090876737-30e9e1cbcded?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80"},
       price: "3000",
-      qty:1
+      qty:"1",
       
       },
       {
@@ -34,7 +34,7 @@ export default[
       name: "တော်ဝင်သဇင်ပန်း",
       subImg: {uri:"https://i.pinimg.com/736x/9a/88/e7/9a88e78ffeff94b3fc1293ea18f9c44a.jpg"},
       price: "4000 ",
-      qty:1
+      qty:"1",
       
     },
       {
@@ -53,7 +53,7 @@ export default[
       name: "လီလီပန်း",
       subImg: {uri:"https://i.pinimg.com/564x/1a/24/ce/1a24cec64eebc84f29a899a5e3c2fa7f.jpg"},
       price: "35000",
-      qty:1
+      qty:"1",
       },
       {
      
@@ -71,7 +71,7 @@ export default[
       name: "ပိန်းပန်း",
       subImg: {uri:"https://i.pinimg.com/564x/20/fb/ba/20fbba5f9b75fab9e6af2b9ddb636783.jpg"},
       price: "45000",
-      qty:1
+      qty:"1",
       
       },
       {
@@ -90,7 +90,7 @@ export default[
       name: "နှင်းဆီအဖြူ",
       subImg: {uri:"https://i.pinimg.com/564x/fb/dd/60/fbdd60a5cfd434dd2e770cb5decafa4e.jpg"},
       price: "5500",
-      qty:1
+      qty:"1",
       
       },
       {
@@ -109,7 +109,7 @@ export default[
       name: "ကံ့ကော်ပန်း",
       subImg: {uri:"https://i.pinimg.com/564x/62/24/ad/6224ad672b3c25b1f40dfb09d22879c9.jpg"},
       price: "3000",
-      qty:1
+      qty:"1",
       
       },
       {
@@ -128,7 +128,7 @@ export default[
       name: "ကန္တာရနှင်းဆီ",
       subImg: {uri:"https://i.pinimg.com/564x/43/83/f3/4383f31bf2f184efe5f6279ebce6aead.jpg"},
       price: "3000",
-      qty:1
+      qty:"1",
       
       },
       {
@@ -147,7 +147,7 @@ export default[
       name: "ငွေပန်းပျိုးပင်",
       subImg: {uri:"https://i.pinimg.com/564x/ae/60/66/ae60666d64c6b85ab29f0c00526cd0da.jpg"},
       price: "3500",
-      qty:1
+      qty:"1",
       
       }
     ]

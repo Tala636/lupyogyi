@@ -13,7 +13,7 @@ export default [
         name: "Swiss cheese",
         subImg: {uri:"https://i.pinimg.com/564x/71/57/21/715721cef5bcf33a255a0b5480e27d1e.jpg"},
         price: "15000",
-        __v: 0
+        qty:"1",
         },
         {
        
@@ -28,7 +28,7 @@ export default [
         name: "Lucky Bamboo",
         subImg: {uri:"https://i.pinimg.com/564x/94/54/64/945464884f56a33acba36c2a3df8c156.jpg"},
         price: "12500",
-        __v: 0
+        qty:"1",
         },
         {
        
@@ -43,7 +43,7 @@ export default [
         name: "Zebra",
         subImg: {uri:"https://i.pinimg.com/564x/57/dc/6e/57dc6e2a6bc90f253246f72ba0b34861.jpg"},
         price: "12000",
-        __v: 0
+        qty:"1",
         },
         {
        
@@ -58,7 +58,7 @@ export default [
         name: "Lunaria",
         subImg: {uri:"https://i.pinimg.com/564x/65/46/be/6546beb010b120ddfdf51b66b06cd66b.jpg"},
         price: "16000",
-        __v: 0
+        qty:"1",
         },
         {
        
@@ -73,7 +73,7 @@ export default [
         name: "Golden barrel cactus",
         subImg: {uri:"https://i.pinimg.com/564x/0e/68/a7/0e68a7f130ae1f50718b76091525069a.jpg"},
         price: "25000",
-        __v: 0
+        qty:"1",
         },
         {
         
@@ -88,7 +88,7 @@ export default [
         name: "Oxalis",
         subImg: {uri:"https://i.pinimg.com/564x/19/40/e8/1940e8096934aeea8eaa060ff0186661.jpg"},
         price: "16500",
-        __v: 0
+        qty:"1",
         },
         {
         
@@ -103,7 +103,7 @@ export default [
         name: "Zanzibar gem",
         subImg: {uri:"https://i.pinimg.com/564x/4d/42/5a/4d425af9191c60775331d675ee9b1b3f.jpg"},
         price: "8000",
-        __v: 0
+        qty:"1",
         },
         {
         
@@ -118,21 +118,7 @@ export default [
         name: "Jade",
         subImg: {uri:"https://i.pinimg.com/564x/83/f7/6e/83f76e6beac56a7e0570f68fae9d53a2.jpg"},
         price: "4000",
-        __v: 0
+        qty:"1",
         },
-        {
-        
-        img1: {uri:"https://i.pinimg.com/564x/a5/e9/56/a5e95689ef412b5a85d5abc9cc3bc67f.jpg"},
-        light: "ရှင်သန်ကြီးထွားရန်အတွက် တစ်နေ့လျှင် တောက်ပပြီး တိုက်ရိုက်နေရောင်ခြည် နာရီပေါင်းများစွာ လိုအပ်သည်။ နေရောင်ခြည်လုံလောက်စွာမရခြင်းက အပင်ကို တင်းမာစေပြီး ဆွဲဆောင်မှုရှိသော ကျစ်လစ်သောပုံစံကို ဆုံးရှုံးစေသည်။",
-        soil: "သဲနှင့် စိမ့်ဝင်နိုင်သော မြေများတွင် စိုက်နိုင်ပါသည်။ ရေကို အချိန်ကြာကြာ ထိန်းထားနိုင်သောကြောင့် မြေဆွေးမြေဆီလွှာကို ရှောင်ပါ။",
-        water: "ရေပိုလျှံလောင်းခြင်းကို ရှောင်ကြဉ်သင့်သည်။ ရေအနည်းငယ်သာ ရံဖန်ရံခါ လောင်းပေးပါ",
-        temp: "သဲကန္တာရပင်ဖြစ်သောကြောင့် ပူပြင်းခြောက်သွေ့သော အခြေအနေများကို ခံနိုင်ရည်ရှိသည်။ စိုစွတ်လွန်းတဲ့ အခြေအနေနှင့် အေးလွန်းသောရာသီဥတု တွင် ကောင်းကောင်းမရှင်သန်နိုင်  အိမ်တွင်း၌ ထားပါက ပုံမှန်အိမ်တွင်းအပူချိန်နှင့် စိုထိုင်းဆသည် အပင်အတွက်ကောင်းပါသည်။",
-        fertilizer: "ရှားစောင်းလက်ပတ်နှင့် အရည်ရွှမ်းသော အပင်များအတွက် ဒီဇိုင်းထုတ်ထားသော ဓာတ်မြေသြဇာ ကိုအသုံးပြုနိုင်ပါသည်။"
-        ,
-        _id: "64a12ae342aa2fee7e17a8e4",
-        name: "Mexican snowball",
-        subImg: {uri:"https://i.pinimg.com/564x/a5/e9/56/a5e95689ef412b5a85d5abc9cc3bc67f.jpg"},
-        price: "4000",
-        __v: 0
-        }
+       
         ]

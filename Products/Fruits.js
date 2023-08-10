@@ -13,7 +13,7 @@ export default [
     name: "ကြက်မောက်ကိုင်းဆက်",
     price: "9000",
     subImg: {uri:"https://5.imimg.com/data5/ANDROID/Default/2020/9/GA/PE/OI/41819292/product-jpeg-500x500.jpeg"},
-    qty:1,
+    qty:"1",
     __v: 0
     },
     {
@@ -30,7 +30,7 @@ export default [
     name: "ဒူးရင်းကိုင်းဆက်",
     price: "12000",
     subImg: {uri:"https://newnessplant.in/wp-content/uploads/2022/08/5935241_orig-510x680.jpg"},
-    qty:1,
+    qty:"1",
     __v: 0
     },
     {
@@ -47,7 +47,7 @@ export default [
     name: "ပတ္တမြားကျွဲကော",
     price: "7500",
     subImg: {uri:"https://i.etsystatic.com/36443250/r/il/c56a91/4029730181/il_fullxfull.4029730181_b4k8.jpg"},
-    qty:1,
+    qty:"1",
     __v: 0
     },
     {
@@ -64,7 +64,7 @@ export default [
     name: "မင်းကွတ်ကိုင်းဆက်",
     price: "5000",
     subImg: {uri:"https://lunti.ph/cdn/shop/products/mangosteen_grafted_grande.jpg?v=1533007810"},
-    qty:1,
+    qty:"1",
     __v: 0
     },
     {
@@ -81,7 +81,7 @@ export default [
     name: "ရေငန်းသီးအပင်",
     price: "5000",
     subImg: {uri:"https://www.nparks.gov.sg/-/media/ffw/migrated/round2/flora/3289/f8845b0d6ec2410c9d32dabdc2e94c86.ashx"},
-    qty:1,
+    qty:"1",
     __v: 0
     },
     {
@@ -98,7 +98,7 @@ export default [
     name: "စိန်တစ်လုံးသရက်",
     price: "3000",
     subImg: {uri:"https://plantogram.com/wa-data/public/shop/products/55/06/655/images/1618/1618.750@2x.jpg"},
-    qty:1,
+    qty:"1",
     __v: 0
     },
     {
@@ -115,7 +115,7 @@ export default [
     name: "စပျစ်ပျိုးပင်",
     price: "1700",
     subImg: {uri:"https://i.pinimg.com/564x/1d/80/c4/1d80c40addcd73b75e4e0d04ddca23bb.jpg"},
-    qty:1,
+    qty:"1",
     __v: 0
     },
     {
@@ -132,7 +132,7 @@ export default [
     name: "ဩဇာပျိုးပင်",
     price: "2000",
     subImg: {uri:"https://i.pinimg.com/564x/36/06/ac/3606ac75cb7200ccd51ef3f52c0a08ce.jpg"},
-    qty:1,
+    qty:"1",
     __v: 0
     }
     ]

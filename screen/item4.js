@@ -1,22 +1,23 @@
 import React,{useState,useEffect} from "react";
 import { SafeAreaView,View,TouchableOpacity,Image,Text,FlatList,Dimensions, BackHandler, } from "react-native";
 import HeaderComponent from "../Components/HeaderComponent";
-import Flowers from "../Products/Flowers";
+import indoor from "../Products/indoor";
 
  const Wid=Dimensions.get('screen').width;
 
-const ShowItems=({navigation,route})=>{
+const ShowItems4=({navigation,route})=>{
+
+
 
 
     return(
         <SafeAreaView style={{flex:1}}>
         <HeaderComponent navigation={navigation}/>
-        
          <View style={{flex:1,marginTop:80,backgroundColor:'#8df7db'}}>
-         <Text style={{marginBottom:10,fontSize:18,fontWeight:"bold",width:Wid,textAlign:'center',}}>ဥယျာဉ်ခြံပန်းမန်အပင်များ</Text>
+         <Text style={{marginBottom:10,fontSize:18,fontWeight:"bold",width:Wid,textAlign:'center'}}>Indoor Plants</Text>
            <FlatList 
            style={{}}
-            data={Flowers}
+            data={indoor}
             numColumns={2}
             renderItem={({item,index})=>{
                 return(
@@ -46,4 +47,4 @@ const ShowItems=({navigation,route})=>{
     )
 }
 
-export default ShowItems;
+export default ShowItems4;
