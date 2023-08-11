@@ -7,6 +7,7 @@ import cartAction from '../stores/action/cart';
 import totalQtyAction from '../stores/action/qty';
 import wishListAction from '../stores/action/wishList';
 import AsyncStorage from "@react-native-async-storage/async-storage"
+import BackHead from "../Components/backHeader";
 
 
 const width = Dimensions.get('screen').width
@@ -98,6 +99,7 @@ const saveTocart=(prodItem)=>{
 
     return(
         <View style={styles.container}>
+          <BackHead navigation={navigation}/>
         { products?.length > 0 ?
         <View style={styles.content}>
         { 
