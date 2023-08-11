@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import { SafeAreaView,View,Text,TouchableOpacity,Image,FlatList,ScrollView,TextInput,StyleSheet,Dimensions } from "react-native";
+import { SafeAreaView,View,Text,TouchableOpacity,Image,FlatList,ScrollView,TextInput,StyleSheet,Dimensions,BackHandler } from "react-native";
 import BottomTabComponent from "../Components/Bottom";
 import AllProduct from "../Products/AllProduct";
 import {SliderBox} from "react-native-image-slider-box";
@@ -46,6 +46,12 @@ const Home=({navigation,route})=>{
       }
       getData();
 
+       const backAction=()=>{
+        return true;
+       };
+
+       const backHandler=BackHandler.addEventListener("hardwareBackPress",backAction);
+       return()=>backHandler.remove();
       
 
      
