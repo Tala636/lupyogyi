@@ -1,13 +1,12 @@
 import React,{useState,useEffect} from "react";
 import { SafeAreaView,View,Text,
     Image,TouchableOpacity,
-    TextInput,Dimensions, KeyboardAvoidingView, ImageBackground, Alert,
+    TextInput,Dimensions, KeyboardAvoidingView, ImageBackground, Alert,ScrollView
 } from "react-native";
 import signAction from "../stores/action/sign";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch, useSelector } from "react-redux";
 import loginAction from '../stores/action/login'
-import { onPress } from "deprecated-react-native-prop-types/DeprecatedTextPropTypes";
 
 
 
@@ -118,12 +117,15 @@ const Signup=({navigation})=>{
     return(
           
             
-           <KeyboardAvoidingView style={{flex:1}} enabled={true} behavior={"padding"}>
+           
             
             <SafeAreaView style={{flex:1,}}>
             
             <ImageBackground style={{width:screenWidth,}} source={require('../assets/proflie/SignUpback.jpg')}>
-            
+            <ScrollView contentContainerStyle={{}}>
+            <KeyboardAvoidingView style={{flex:1}} 
+             //behavior={'padding'}
+            >
             <View style={{marginTop:50}}>
               <Text style={{fontSize:30,textAlign:'center',fontWeight:'bold',color:"white"}}>Register</Text>
               <Text style={{fontSize:16,textAlign:'center',fontWeight:'bold',color:'white'}}>Create your new account</Text>
@@ -246,13 +248,14 @@ const Signup=({navigation})=>{
                   </TouchableOpacity>
                   
               </View>
-              
+              </KeyboardAvoidingView>
+              </ScrollView>
               </ImageBackground>
                       
                   
            
       </SafeAreaView>
-           </KeyboardAvoidingView>
+          
           
            
           

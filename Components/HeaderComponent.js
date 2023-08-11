@@ -55,12 +55,12 @@ const HeaderComponent=({navigation})=>{
          style={{marginRight:10}}>
          <Image style={{width:35,height:35}} source={require('../assets/icons/icons8-sell-stock-64.png')}/>
          </TouchableOpacity>
-         {totalQty!=0 &&
+         {/* {totalQty!=0 &&
          
          <View style={{borderRadius:15,height:18,backgroundColor:'orange',position:'absolute',left:25}}>
          <Text style={{padding:2,fontSize:12}}>{totalQty}</Text>
          </View>
-         }
+         } */}
 
          </View>
         
