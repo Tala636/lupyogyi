@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import {View,TouchableOpacity,Text,StyleSheet,Modal } from "react-native";
-import colors from "../constants/colors";
+
 
 const ModalComponent = ({cancelHandler, visible,logoutHandler}) => {
 
