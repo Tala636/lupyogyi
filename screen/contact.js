@@ -8,15 +8,15 @@ import React from "react";
         <SafeAreaView style={{flex:1}}>
             <BackHead navigation={navigation}/>
 
-            <View style = {{marginTop:90}}>
+            
 
         
         <TouchableOpacity 
             style = {styles.card}>
 
-                <Image style = {{width:80,height:80}} source = {require('../assets/proflie/icons8-contact-us-32.png')}/>
+                <Image style = {{width:100,height:100,borderRadius:50}} source = {{uri:'https://e7.pngegg.com/pngimages/32/228/png-clipart-telephone-mobile-phone-icon-cartoon-man-cartoon-character-telephone-call.png'}}/>
 
-                <Text style = {{fontSize:17,color:'white',fontWeight:'bold',marginTop:5}}>Contact Us</Text>
+                <Text style = {{fontSize:17,color:'white',fontWeight:'bold',marginTop:5}}>Contact Us </Text>
 
             </TouchableOpacity>
 
@@ -61,11 +61,7 @@ import React from "react";
         </View>
 
      
-        </View>
-
-
-            
-            
+       
         </SafeAreaView>
     )
  }
@@ -79,7 +75,7 @@ import React from "react";
     
     content : {flex:1,backgroundColor:'white'},
     
-    card :  {padding:50,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginTop:20},
+    card :  {padding:50,backgroundColor:'#8df7db',justifyContent:'center',alignItems:'center',},
     
     card2 : {alignItems:'center',marginTop:20,justifyContent:'center'},
     

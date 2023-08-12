@@ -12,9 +12,7 @@ const Order = ({ navigation, route }) => {
     let order = useSelector(state => state.Order)
     const dispatch = useDispatch()
 
-    //console.log("order", order)
-    // const innner = order[0]
-
+  
     useEffect(() => {
         async function getBoughtItem() {
             let boughtData = await AsyncStorage.getItem('Buy')

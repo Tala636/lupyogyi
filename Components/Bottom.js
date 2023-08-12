@@ -64,7 +64,7 @@ const BottomTabComponent =({navigation,ScreenName})=>{
             
            { totalQty!=0  &&
                <View style={{backgroundColor:'orange',height:18,borderRadius:11,position:'absolute',left:16,top:0}}>
-               <Text style={{fontSize:12}}>{totalQty}</Text>
+               <Text style={{fontSize:12}}></Text>
                </View>
         }
 
