@@ -1,8 +1,27 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { SafeAreaView,View,TouchableOpacity,Text,Image, } from "react-native";
 import { colors } from "../constant/theme";
 import BottomTabComponent from "../Components/Bottom";
+import ModalComponent from "../Components/Modal";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import loginAction from '../stores/action/login';
+import { useDispatch,useSelector } from "react-redux";
+
+
+
+
+
+
+
+
+
 const Proflie=({navigation,route})=>{
+      
+     const dispatch =useDispatch()
+     const UserData=useSelector(state=>state.User)
+
+
+   const [showDialog,setShowDialog]=useState(false)
     return(
         <SafeAreaView style={{flex:1}}>
           <View style={{backgroundColor:"#8df7db",height:250,marginTop:40,flexDirection:'row',alignItems:'center',padding:10}}>
@@ -73,7 +92,7 @@ const Proflie=({navigation,route})=>{
            <View style={{backgroundColor:'white',height:50,justifyContent:'center'}}>
             <TouchableOpacity 
             
-            onPress={()=>navigation.navigate('contact')}
+            onPress={()=>setShowDialog(true)}
             
             style={{flexDirection:'row',alignItems:'center',marginLeft:15}}>
               <Image style={{width:25,height:25,marginRight:10}} source={require('../assets/icons/icons8-logout-50.png')}/>
@@ -81,6 +100,13 @@ const Proflie=({navigation,route})=>{
             </TouchableOpacity>
            </View>
           </View>
+          <ModalComponent
+        logoutHandler={() => {AsyncStorage.removeItem('user')
+                              dispatch(loginAction.login(null))
+                              navigation.navigate('login')
+                             setShowDialog(false)}}
+        
+        cancelHandler = {() => setShowDialog(false)} visible = {showDialog}/>
          <BottomTabComponent navigation={navigation} ScreenName="ProfileScreen"/>
         </SafeAreaView>
     )

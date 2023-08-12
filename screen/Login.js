@@ -1,6 +1,9 @@
 import React,{useEffect,useState} from "react";
-import { View,SafeAreaView,Text,TextInput,TouchableOpacity,Image,ImageBackground,Dimensions } from "react-native";
+import { View,SafeAreaView,Text,TextInput,TouchableOpacity,Image,ImageBackground,Dimensions,KeyboardAvoidingView,} from "react-native";
 import { useDispatch,useSelector } from "react-redux";
+import AsyncStorage  from "@react-native-async-storage/async-storage";
+import loginAction from '../stores/action/login';
+import  signAction from '../stores/action/sign';
 
 
  const screenWidth= Dimensions.get("screen").width;
@@ -16,10 +19,55 @@ const Login=({navigation})=>{
     const dispatch=useDispatch()
     const UserData=useSelector(state=>state.Sign)
 
+    useEffect(()=>{
+
+        const getUserData=async()=>{
+         const UserDataAsync =await AsyncStorage.getItem('sign')
+         const UserData =JSON.parse(UserDataAsync) 
+        console.log(UserData)
+         setData(UserData)
+
+
+        }
+        
+       getUserData();
+
+       
+
+
+ },[])
+
+  const loginHandler=()=>{
+        data.map((res)=>{
+         if(res.password==password && res.email==email){
+             let Arr=[]
+             Arr.push(res)
+             AsyncStorage.setItem('user',JSON.stringify(Arr))
+             dispatch(loginAction.login(Arr))
+             AsyncStorage.setItem('sign',JSON.stringify(data))
+             dispatch(signAction.Signup(data))
+             setError(false)
+             setError1(false)
+             console.log('login successful')
+             navigation.navigate('home')
+
+            
+         }
+         else
+         {
+             console.log('login Failed')
+         }
+
+         
+        })
+  }
+   
+
  return(
 
-    <SafeAreaView style={{flex:1}}>
-       <ImageBackground style={{width:screenWidth,}} source={require('../assets/login/nature-background-backgrounds-hd-wallpaper.jpg')}>
+    <KeyboardAvoidingView style={{flex:1}} enabled={true} behavior="padding">
+        <SafeAreaView style={{flex:1}}>
+       <ImageBackground style={{width:screenWidth,}} source={require('../assets/login/photo-1506184155123-73f3a6dfc2fc.jpg')}>
         
             <View style={{justifyContent:'center',marginBottom:90,marginTop:40,alignItems:'center'}}>
             <Text style={{fontSize:40,color:'white',fontWeight:'bold'}}>Login</Text>
@@ -50,25 +98,26 @@ const Login=({navigation})=>{
                <View>
             <Text style={{marginBottom:5,fontSize:16,fontWeight:'bold',}}>Password</Text>
                 <View style={{marginBottom:5,flexDirection:"row"}}>
-                    <TextInput
+                   <View style={{width:350,borderWidth:0.5,height:50,padding:10,borderRadius:10}}>
+                   <TextInput
                     secureTextEntry={view}  
-                    style={{width:350,borderWidth:0.5,height:50,padding:10,borderRadius:10}}
+                    style={{width:200}}
                      placeholder="Enter your password"
                      onChangeText={(text)=>setPassword(text)}
                      value={password}
                     />
-                    {
-                        view? 
-                        <TouchableOpacity>
-                            <Image style={{width:25,height:25,position:'absolute',right:20,bottom:10,tintColor:'black'}} source={require('../assets/icons/icons8-eye-30.png')}/>
-                        </TouchableOpacity>
-                        :
-                        <TouchableOpacity>
-                            <Image style={{width:25,height:25,position:'absolute',right:20,bottom:10,tintColor:'gray'}} source={require('../assets/icons/icons8-eye-30.png')}/>
-                        </TouchableOpacity>
-                    }
+                   </View>
+                   {view ? 
+                <TouchableOpacity onPress={()=>setView(false)} style={{position:'absolute',right:15,bottom:10}}>
+                    <Image source={require('../assets/icons/icons8-eye-30.png')} style={{height:25,width:25,tintColor:'black'}}/>
+                </TouchableOpacity>:
+                
+                <TouchableOpacity onPress={()=>setView(true)} style={{position:'absolute',right:15,bottom:10}}>
+                    <Image source={require('../assets/icons/icons8-eye-30.png')} style={{height:25,width:25,tintColor:'gray'}}/>
+                </TouchableOpacity>
+                }
                 </View>
-                {error?
+                {error1?
                 <Text style={{color:'red'}}>Invaild email address</Text>:
                 <Text/>
             }
@@ -79,7 +128,7 @@ const Login=({navigation})=>{
                 <Text style={{color:'white'}}>Login</Text>
             </TouchableOpacity>
 
-            <View style={{alignItems:'center',flexDirection:'row',justifyContent:'center',marginTop:20}}>
+            <View style={{alignItems:'center',flexDirection:'row',justifyContent:'center',marginTop:20,marginBottom:100}}>
                 <Text style={{marginRight:5}}>Create a new account.</Text>
                 <TouchableOpacity 
                 onPress={()=>navigation.navigate('signup')}
@@ -95,6 +144,7 @@ const Login=({navigation})=>{
            
        </ImageBackground>
     </SafeAreaView>
+    </KeyboardAvoidingView>
  )
 
 }
